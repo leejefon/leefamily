@@ -1,0 +1,22 @@
+{
+  "name": "Leefamily",
+  "version": "0.0.0",
+  "authors": [
+    "Jeff Lee <leejefon@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-loading-bar": "~0.8.0",
+    "angular-route": "~1.4.4",
+    "toastr": "~2.1.1",
+    "requirejs": "~2.1.20"
+  }
+}
