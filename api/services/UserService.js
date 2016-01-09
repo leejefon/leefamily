@@ -5,11 +5,14 @@
  * @created  :: 2016/01/08
  */
 
-var Passport = require('algoliasearch');
+var algoliasearch = require('algoliasearch');
+var client = algoliasearch(process.env.ALGOLIA_APPLICATION_ID, process.env.ALGOLIA_ADMIN_API_KEY);
 
 module.exports = (function () {
 
-    function save () {
+    var index = client.initIndex('leefamily');
+
+    function save (cb) {
 
     }
 

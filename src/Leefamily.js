@@ -14,7 +14,7 @@ require.config({
         angularUIRouter: '../assets/vendor/angular-ui-router/release/angular-ui-router.min',
         angularUIBootstrap: '../assets/vendor/angular-bootstrap/ui-bootstrap.min',
         angularLoadingBar: '../assets/vendor/angular-loading-bar/build/loading-bar',
-        algoliasearch: 'https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.angular.min'
+        algoliasearch: '../assets/vendor/algoliasearch/algoliasearch.min'
     },
     shim: {
         jquery: { exports: '$' },
@@ -23,7 +23,7 @@ require.config({
         angular: { exports: 'angular', deps: ['jquery'] },
         angularUIRouter: ['angular'],
         angularLoadingBar: ['angular'],
-        algoliasearch: ['angular']
+        algoliasearch: { exports: 'algoliasearch' }
     },
     priority: ['jquery', 'angular']
 });

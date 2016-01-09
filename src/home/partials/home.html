@@ -2,40 +2,15 @@
     <header></header>
 
     <div id="search_form">
-        <input id="search_box" name="search" type="text" placeholder="What're we looking for ?" />
+        <input id="search_box" name="search" type="text" placeholder="Search" />
         <input id="search_submit" value="" type="submit" />
     </div>
 
     <hr />
 
     <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <card></card>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <card></card>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <card></card>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <card></card>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <card></card>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <card></card>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <card></card>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <card></card>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <card></card>
+        <div class="col-lg-4 col-md-6 col-sm-12 card-div" ng-repeat="user in users">
+            <card user="user"></card>
         </div>
     </div>
-
 </div>

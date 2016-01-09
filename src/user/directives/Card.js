@@ -14,7 +14,9 @@ define(['user/directives'], function (UserDirectives) {
             return {
                 restrict: 'E',
                 replace: true,
-                scope: {},
+                scope: {
+                    user: '='
+                },
                 templateUrl: '/templates/user/partials/card.html',
                 controller: ['$scope', function ($scope) {
 

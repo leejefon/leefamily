@@ -5,16 +5,20 @@
  * @created     :: 2016/01/08
  */
 
+var bcrypt = require('bcrypt');
+
 module.exports = (function () {
 
     var tableName = 'users';
 
     var attributes = {
         name: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            unique: true
         },
         email: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            unique: true
         },
         avatar: {
             type: Sequelize.TEXT('long')
@@ -26,7 +30,7 @@ module.exports = (function () {
             type: Sequelize.STRING
         },
         home_phone: {
-            type: Sequelize.BOOLEAN
+            type: Sequelize.STRING
         },
         mobile_phone: {
             type: Sequelize.STRING
@@ -50,7 +54,11 @@ module.exports = (function () {
             type: Sequelize.INTEGER
         },
         role: {
-            type: Sequelize.ENUM('admin', 'regular')
+            type: Sequelize.ENUM('admin', 'regular'),
+            defaultValue: 'regular'
+        },
+        algolia_object_id: {
+            type: Sequelize.INTEGER
         }
     };
 
