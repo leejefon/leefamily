@@ -18,20 +18,15 @@ Passport.deserializeUser(function (user, done) {
 });
 
 Passport.use(new LocalStrategy({
-    usernameField: 'username',
+    usernameField: 'email',
     passReqToCallback: true,
-}, function (req, username, password, done) {
-    var filter = username.indexOf('@') === -1 ? { username: username } : { email: username };
-
-    User.findOne(filter).then(function (user) {
-        if (err) { return done(null, err); }
+}, function (req, email, password, done) {
+    User.findOne({ email: email }).then(function (user) {
         if (!user || user.length < 1) { return done(null, false, { message: 'Incorrect username/password' }); }
 
         bcrypt.compare(password, user.password, function (err, res) {
             if (!res) return done(null, false, { message: 'Invalid Password' });
-
-            delete user.password;
-            user.save(function(){});
+            return done(null, user);
         });
     });
 }));

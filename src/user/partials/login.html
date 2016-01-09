@@ -1,1 +1,42 @@
-<div>Login</div>
+<div class="modal show">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h3 class="modal-title">李家通訊錄</h3>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <input type="email" class="form-control" ng-model="loginForm.email" placeholder="E-mail" />
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" class="form-control" ng-model="loginForm.password" placeholder="Password" />
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="login()"><i class="fa fa-sign-in"></i>&nbsp; Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+.modal-footer {
+    text-align: center;
+}
+.input-group {
+    margin: 10px;
+}
+.input-group .fa {
+    width: 30px;
+    font-size: 20px;
+}
+
+@media(min-width: 768px) {
+    .modal-dialog {
+        margin-top: 160px;
+    }
+}
+</style>

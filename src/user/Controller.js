@@ -1,18 +1,25 @@
 /**
  * User Controller
  *
- * @author      :: Jeff Lee
- * @created     :: 2016/01/08
+ * @author  :: Jeff Lee
+ * @created :: 2016/01/08
  */
 
-define(['angular'], function (angular) {
+define(['angular', 'auth/Service'], function (angular) {
 
-	return angular.module('User.controllers', [])
+	return angular.module('User.controllers', ['Auth'])
 
-		.controller('UserController', ['$scope', '$state', '$stateParams', '$http', function ($scope, $state, $stateParams, $http) {
+		.controller('UserController', ['$scope', '$state', '$stateParams', 'Auth', function ($scope, $state, $stateParams, Auth) {
 
 			$scope.login = function () {
+				Auth.login($scope.loginForm.email, $scope.loginForm.password);
+			};
 
+			$scope.login_form = function () {
+				$scope.loginForm = {
+					email: '',
+					password: ''
+				};
 			};
 
 			$scope.reset_password = function () {

@@ -8,7 +8,6 @@ module.exports.routes = {
     'GET /reset_password/:key': 'HomeController.index',
 
     'POST /user/login'              : 'UserController.login',
-    'GET  /user/post_login'         : 'UserController.post_login',
     'GET  /user/logout'             : 'UserController.logout',
     'POST /user/reset_password'     : 'UserController.reset_password',
     'POST /user/reset_password/:key': 'UserController.reset_password',

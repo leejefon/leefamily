@@ -9,14 +9,19 @@ var Passport = require('passport');
 
 module.exports = (function () {
 
-    function post_login (req, res) {
-        res.cookie('user', JSON.stringify({
-            id: req.user.id,
-            name: req.user.name,
-            email: req.user.email
-        }), {});
+    function login (req, res) {
+        Passport.authenticate('local', function (err, user) {
+            if (err) { return next(err); }
+            if (!user) { return res.status(401).json({ error: 'user not found' }); }
+            // TODO: store in cookie as well
 
-        return res.redirect('/');
+            delete user.password;
+            delete user.password_reset_key;
+            req.logIn(user, function (err) {
+                if (err) { return res.json(err); }
+                return res.json(user);
+            });
+        })(req, res);
     }
 
     function logout (req, res) {
@@ -41,12 +46,7 @@ module.exports = (function () {
     }
 
     return {
-        login: Passport.authenticate('local', {
-            successReturnToOrRedirect: '/user/post_login',
-            failureRedirect: '/login',
-            failureFlash: 'Wrong username or password.'
-        }),
-        post_login: post_login,
+        login: login,
         logout: logout,
         reset_password: reset_password,
 

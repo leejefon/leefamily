@@ -1,8 +1,8 @@
 /**
  * Home Routes
  *
- * @author      :: Jeff Lee
- * @created     :: 2016/01/08
+ * @author  :: Jeff Lee
+ * @created :: 2016/01/08
  */
 
 define(['angular', 'angularUIRouter'], function (angular) {
@@ -15,7 +15,8 @@ define(['angular', 'angularUIRouter'], function (angular) {
 					url: '/',
 					templateUrl: '/templates/home/partials/home.html',
 					controller: 'HomeController',
-					action: 'home'
+					action: 'home',
+					requireLogin: true
 				});
 
 			$urlRouterProvider.otherwise('/');
