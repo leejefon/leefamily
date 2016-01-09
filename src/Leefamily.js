@@ -11,7 +11,8 @@ require.config({
         toastr: '../assets/vendor/toastr/toastr',
 
         angular: '../assets/vendor/angular/angular',
-        angularRoute: '../assets/vendor/angular-route/angular-route',
+        angularUIRouter: '../assets/vendor/angular-ui-router/release/angular-ui-router.min',
+        angularUIBootstrap: '../assets/vendor/angular-bootstrap/ui-bootstrap.min',
         angularLoadingBar: '../assets/vendor/angular-loading-bar/build/loading-bar',
         algoliasearch: 'https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.angular.min'
     },
@@ -20,7 +21,7 @@ require.config({
         toastr: ['jquery'],
 
         angular: { exports: 'angular', deps: ['jquery'] },
-        angularRoute: ['angular'],
+        angularUIRouter: ['angular'],
         angularLoadingBar: ['angular'],
         algoliasearch: ['angular']
     },

@@ -9,15 +9,15 @@ define(['angular', 'algoliasearch'], function (angular) {
 
 	return angular.module('Home.controllers', ['algoliasearch'])
 
-		.controller('HomeController', ['$scope', '$route', '$routeParams', '$http', 'algolia', function ($scope, $route, $routeParams, $http, algolia) {
+		.controller('HomeController', ['$scope', '$state', '$stateParams', '$http', 'algolia', function ($scope, $state, $stateParams, $http, algolia) {
 
 			$scope.home = function () {
 
 			};
 
 			$scope.init = function () {
-				if ($route.current.action) {
-					$scope[$route.current.action]();
+				if ($state.current.action) {
+					$scope[$state.current.action]();
 				}
 			};
 

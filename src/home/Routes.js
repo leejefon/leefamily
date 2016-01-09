@@ -5,19 +5,20 @@
  * @created     :: 2016/01/08
  */
 
-define(['angular', 'angularRoute'], function (angular) {
+define(['angular', 'angularUIRouter'], function (angular) {
 
-	return angular.module('Home.routes', ['ngRoute'])
+	return angular.module('Home.routes', ['ui.router'])
 
-		.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-			$routeProvider
-				.when('/', {
+		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+			$stateProvider
+				.state('home', {
+					url: '/',
 					templateUrl: '/templates/home/partials/home.html',
 					controller: 'HomeController',
 					action: 'home'
 				});
 
-			$routeProvider.otherwise({ redirectTo: '/' });
+			$urlRouterProvider.otherwise('/');
 
 			$locationProvider.html5Mode(true);
 		}]);

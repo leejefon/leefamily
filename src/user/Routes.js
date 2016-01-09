@@ -5,28 +5,52 @@
  * @created     :: 2016/01/08
  */
 
-define(['angular', 'angularRoute'], function (angular) {
+define(['angular', 'angularUIRouter'], function (angular) {
 
-	return angular.module('User.routes', ['ngRoute'])
+	return angular.module('User.routes', ['ui.router'])
 
-		.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-			$routeProvider
-				.when('/login', {
+		.config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
+			$stateProvider
+				.state('login', {
+					url: '/login',
 					templateUrl: '/templates/user/partials/login.html',
 					controller: 'UserController',
 					action: 'login'
 				})
 
-				.when('/reset_password', {
+				.state('reset_password', {
+					url: '/reset_password',
 					templateUrl: '/templates/user/partials/reset_password.html',
 					controller: 'UserController',
 					action: 'reset_password'
 				})
 
-				.when('/reset_password/:key', {
-					templateUrl: '/templates/user/partials/reset_password.html',
-					controller: 'UserController',
-					action: 'reset_password'
+				.state('reset_password.new', {
+					url: '/reset_password/:key',
+					onEnter: function ($stateParams, $state) {
+
+					}
+				})
+
+				.state('user.add', {
+					url: '/add',
+					onEnter: function ($stateParams, $state) {
+
+					}
+				})
+
+				.state('user.edit', {
+					url: '/:name/edit',
+					onEnter: function ($stateParams, $state) {
+
+					}
+				})
+
+				.state('user.view', {
+					url: '/:name',
+					onEnter: function ($stateParams, $state) {
+
+					}
 				});
 
 			$locationProvider.html5Mode(true);

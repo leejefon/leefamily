@@ -9,14 +9,14 @@ define(['angular'], function (angular) {
 
 	return angular.module('User.controllers', [])
 
-		.controller('UserController', ['$scope', '$route', '$routeParams', '$http', function ($scope, $route, $routeParams, $http) {
+		.controller('UserController', ['$scope', '$state', '$stateParams', '$http', function ($scope, $state, $stateParams, $http) {
 
 			$scope.login = function () {
 
 			};
 
 			$scope.reset_password = function () {
-				var key = $routeParams.key;
+				var key = $stateParams.key;
 
 				if (key) {
 
@@ -24,8 +24,8 @@ define(['angular'], function (angular) {
 			};
 
 			$scope.init = function () {
-				if ($route.current.action) {
-					$scope[$route.current.action]();
+				if ($state.current.action) {
+					$scope[$state.current.action]();
 				}
 			};
 
