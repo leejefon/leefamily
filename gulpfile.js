@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var rjs = require('gulp-requirejs');
+var uglify = require('gulp-uglify');
 
 var paths = {
 	target: '.tmp/public',
@@ -10,6 +11,7 @@ var paths = {
 		'src/**/*.html'
 	],
 	assetsToWatch: [
+		'assets/**',
 		'src/**'
 	]
 };
@@ -21,6 +23,7 @@ gulp.task('uglifyJs', function () {
 		mainConfigFile: "src/Leefamily.js",
 		out: "leefamily.compiled.js"
 	})
+	.pipe(uglify())
 	.pipe(gulp.dest(paths.target + '/js'));
 });
 
