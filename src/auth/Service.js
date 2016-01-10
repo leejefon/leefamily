@@ -18,7 +18,12 @@ define(['auth/app'], function (Auth) {
 						password: password
 					}).then(function (user) {
                         $rootScope.currentUser = user;
-						$state.transitionTo('user');
+						if ($rootScope.originalState) {
+							$state.go($rootScope.originalState.state.name, $rootScope.originalState.params);
+							delete $rootScope.originalState;
+						} else {
+							$state.go('user');
+						}
                     }, function (error) {
 						toastr.error('Login Failed, check your email or password');
 					});

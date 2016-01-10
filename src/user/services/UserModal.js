@@ -14,9 +14,7 @@ define(['user/services'], function (UserServices) {
                 view: function ($stateParams, $state) {
                     $modal.open({
                         templateUrl: "/templates/user/partials/user.html",
-                        resolve: {},
-                        controller: ['$scope', '$state', function ($scope, $state) {
-                            // $scope.state = $state.current;
+                        controller: ['$scope', function ($scope) {
                             $scope.user = $stateParams;
 
                             $scope.close = function () {
@@ -24,7 +22,7 @@ define(['user/services'], function (UserServices) {
                             };
                         }]
                     }).result.finally(function () {
-                      return $state.transitionTo("user");
+                        $state.go("user", null, { reload: true });
                     });
                 },
                 create: function () {

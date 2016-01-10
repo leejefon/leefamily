@@ -9,7 +9,7 @@ define(['angular', 'angularUIRouter', 'user/services/UserModal'], function (angu
 
 	return angular.module('User.routes', ['ui.router', 'User.services'])
 
-		.config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
+		.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider) {
 			$stateProvider
 				.state('user', {
 					url: '/',
@@ -36,7 +36,7 @@ define(['angular', 'angularUIRouter', 'user/services/UserModal'], function (angu
 				})
 
 				.state('user.view', {
-					url: '/:name',
+					url: ':name',
 					requireLogin: true,
 					onEnter: ['$stateParams', '$state', 'UserModal', function ($stateParams, $state, UserModal) {
 						UserModal.view($stateParams, $state);
@@ -44,5 +44,7 @@ define(['angular', 'angularUIRouter', 'user/services/UserModal'], function (angu
 				});
 
 			$locationProvider.html5Mode(true);
+
+			// $urlRouterProvider.otherwise('/');
 		}]);
 });

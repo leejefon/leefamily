@@ -9,7 +9,7 @@ define(['angular', 'angularUIRouter'], function (angular) {
 
 	return angular.module('Home.routes', ['ui.router'])
 
-		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+		.config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
 			$stateProvider
 				.state('login', {
 					url: '/login',
@@ -35,6 +35,6 @@ define(['angular', 'angularUIRouter'], function (angular) {
 					requireLogin: false
 				});
 
-			$locationProvider.html5Mode(true);
+				$locationProvider.html5Mode(true);
 		}]);
 });

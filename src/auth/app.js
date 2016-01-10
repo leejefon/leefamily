@@ -20,7 +20,11 @@ define([
 			// TODO: check cookie
             if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
                 event.preventDefault();
-                $state.transitionTo('login');
+				$rootScope.originalState = {
+					state: toState,
+					params: toParams
+				};
+                $state.go('login');
             }
         });
     }]);
