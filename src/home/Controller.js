@@ -5,20 +5,29 @@
  * @created :: 2016/01/08
  */
 
-define(['angular', 'user/services/User'], function (angular) {
+define(['angular', 'auth/Service'], function (angular) {
 
-	return angular.module('Home.controllers', ['User.services'])
+	return angular.module('Home.controllers', ['Auth'])
 
-		.controller('HomeController', ['$scope', '$state', '$stateParams', '$http', 'User', function ($scope, $state, $stateParams, $http, User) {
+		.controller('HomeController', ['$scope', '$state', '$stateParams', 'Auth', function ($scope, $state, $stateParams, Auth) {
 
-			$scope.home = function () {
-				User.list(function (err, data) {
-					$scope.users = data;
-				});
+			$scope.login = function () {
+				Auth.login($scope.loginForm.email, $scope.loginForm.password);
+			};
 
-				// User.search('jeff', function (err, data) {
-				// 	console.log(data);
-				// });
+			$scope.login_form = function () {
+				$scope.loginForm = {
+					email: '',
+					password: ''
+				};
+			};
+
+			$scope.reset_password = function () {
+				var key = $stateParams.key;
+
+				if (key) {
+
+				}
 			};
 
 			$scope.init = function () {

@@ -13,7 +13,7 @@ define(['auth/app'], function (Auth) {
 
             return {
                 login: function (email, password) {
-                    $http.post('/user/login', {
+                    $http.post('/login', {
 						email: email,
 						password: password
 					}).then(function (user) {

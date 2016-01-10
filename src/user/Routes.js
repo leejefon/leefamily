@@ -11,28 +11,12 @@ define(['angular', 'angularUIRouter', 'user/services/UserModal'], function (angu
 
 		.config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
 			$stateProvider
-				.state('login', {
-					url: '/login',
-					templateUrl: '/templates/user/partials/login.html',
+				.state('user', {
+					url: '/',
+					templateUrl: '/templates/user/partials/index.html',
 					controller: 'UserController',
-					action: 'login_form',
-					requireLogin: false
-				})
-
-				.state('reset_password', {
-					url: '/reset_password',
-					templateUrl: '/templates/user/partials/reset_password.html',
-					controller: 'UserController',
-					action: 'reset_password',
-					requireLogin: false
-				})
-
-				.state('reset_password.new', {
-					url: '/reset_password/:key',
-					templateUrl: '/templates/user/partials/reset_password.html',
-					controller: 'UserController',
-					action: 'reset_password',
-					requireLogin: false
+					action: 'index',
+					requireLogin: true
 				})
 
 				.state('user.create', {

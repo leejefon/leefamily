@@ -9,16 +9,12 @@ define([
 	'angular',
 	'angularLoadingBar',
 	'home/Controller',
-    'home/Routes',
-	'home/directives/Header',
-	'user/directives/Card'
+    'home/Routes'
 ], function (angular) {
 
 	return angular.module('Home', [
 		'chieffancypants.loadingBar',
 		'Home.controllers',
-        'Home.routes',
-		'Home.directives',
-		'User.directives'
+        'Home.routes'
 	]);
 });
