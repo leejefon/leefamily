@@ -6,7 +6,6 @@
  */
 
 define(['user/directives'], function (UserDirectives) {
-    'use strict';
 
     return UserDirectives
 
@@ -18,8 +17,10 @@ define(['user/directives'], function (UserDirectives) {
                     user: '='
                 },
                 templateUrl: '/templates/user/partials/card.html',
-                controller: ['$scope', function ($scope) {
-
+                controller: ['$scope', '$state', function ($scope, $state) {
+                    $scope.showProfile = function (name) {
+                        $state.go('user.view', { name: name });
+                    };
                 }],
                 link: function (scope, elem, attrs) {
 

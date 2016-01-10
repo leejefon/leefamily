@@ -6,7 +6,8 @@
  */
 
 define([
-    'angular'
+    'angular',
+    'angularUIBootstrap'
 ], function (angular) {
-    return angular.module('User.services', []);
+    return angular.module('User.services', ['ui.bootstrap']);
 });

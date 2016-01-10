@@ -12,7 +12,7 @@ require.config({
 
         angular: '../assets/vendor/angular/angular',
         angularUIRouter: '../assets/vendor/angular-ui-router/release/angular-ui-router.min',
-        angularUIBootstrap: '../assets/vendor/angular-bootstrap/ui-bootstrap.min',
+        angularUIBootstrap: '../assets/vendor/angular-bootstrap/ui-bootstrap-tpls.min',
         angularLoadingBar: '../assets/vendor/angular-loading-bar/build/loading-bar',
         algoliasearch: '../assets/vendor/algoliasearch/algoliasearch.min'
     },

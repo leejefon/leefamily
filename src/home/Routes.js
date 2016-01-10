@@ -11,7 +11,7 @@ define(['angular', 'angularUIRouter'], function (angular) {
 
 		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			$stateProvider
-				.state('home', {
+				.state('user', {
 					url: '/',
 					templateUrl: '/templates/home/partials/home.html',
 					controller: 'HomeController',
@@ -19,7 +19,7 @@ define(['angular', 'angularUIRouter'], function (angular) {
 					requireLogin: true
 				});
 
-			$urlRouterProvider.otherwise('/');
+			// $urlRouterProvider.otherwise('/');
 
 			$locationProvider.html5Mode(true);
 		}]);

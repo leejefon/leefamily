@@ -1,7 +1,7 @@
 
 module.exports.routes = {
 
-    'GET /'             : 'HomeController.index',
+    'GET /'                   : 'HomeController.index',
 
     'GET /login'              : 'HomeController.index',
     'GET /reset_password'     : 'HomeController.index',
@@ -13,9 +13,9 @@ module.exports.routes = {
     'POST /user/reset_password/:key': 'UserController.reset_password',
 
     // Admin Only
-    'PUT    /user'              : 'UserController.add',
-    'POST   /user/:id'          : 'UserController.update',
-    'DELETE /user/:id'          : 'UserController.remove',
+    'PUT    /user'    : 'UserController.add',
+    'POST   /user/:id': 'UserController.update',
+    'DELETE /user/:id': 'UserController.remove',
 
-    'GET /:user_or_organization': 'HomeController.index',
+    'GET /:name'      : 'HomeController.index'
 };

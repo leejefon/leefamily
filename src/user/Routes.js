@@ -5,9 +5,9 @@
  * @created :: 2016/01/08
  */
 
-define(['angular', 'angularUIRouter'], function (angular) {
+define(['angular', 'angularUIRouter', 'user/services/UserModal'], function (angular) {
 
-	return angular.module('User.routes', ['ui.router'])
+	return angular.module('User.routes', ['ui.router', 'User.services'])
 
 		.config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
 			$stateProvider
@@ -29,34 +29,34 @@ define(['angular', 'angularUIRouter'], function (angular) {
 
 				.state('reset_password.new', {
 					url: '/reset_password/:key',
-					requireLogin: false,
-					onEnter: function ($stateParams, $state) {
-
-					}
+					templateUrl: '/templates/user/partials/reset_password.html',
+					controller: 'UserController',
+					action: 'reset_password',
+					requireLogin: false
 				})
 
-				.state('user.add', {
-					url: '/add',
+				.state('user.create', {
+					url: '/create',
 					requireLogin: true,
-					onEnter: function ($stateParams, $state) {
-
-					}
+					onEnter: ['$stateParams', '$state', 'UserModal', function ($stateParams, $state, UserModal) {
+						UserModal.create($stateParams, $state);
+					}]
 				})
 
 				.state('user.edit', {
 					url: '/:name/edit',
 					requireLogin: true,
-					onEnter: function ($stateParams, $state) {
-
-					}
+					onEnter: ['$stateParams', '$state', 'UserModal', function ($stateParams, $state, UserModal) {
+						UserModal.edit($stateParams, $state);
+					}]
 				})
 
 				.state('user.view', {
 					url: '/:name',
 					requireLogin: true,
-					onEnter: function ($stateParams, $state) {
-
-					}
+					onEnter: ['$stateParams', '$state', 'UserModal', function ($stateParams, $state, UserModal) {
+						UserModal.view($stateParams, $state);
+					}]
 				});
 
 			$locationProvider.html5Mode(true);
