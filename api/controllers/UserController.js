@@ -19,7 +19,7 @@ module.exports = (function () {
     function getByName (req, res) {
         var name = req.params.name;
 
-        UserService.getByName(name, function (er, user) {
+        UserService.getByName(name, function (err, user) {
             return res.json(user);
         });
     }

@@ -113,7 +113,10 @@ define(['user/services', 'user/services/User', 'bootstrapDatetimePicker'], funct
                         templateUrl: "/templates/user/partials/user.html",
                         controller: ['$scope', 'User', function ($scope, User) {
                             User.getByName($stateParams.name).then(function (response) {
-                                // TODO: close if no user found
+                                if (!response.data) {
+                                    toastr.error('User ' + $stateParams.name + ' is not found');
+                                    $scope.$close();
+                                }
                                 $scope.user = response.data;
                             });
 
