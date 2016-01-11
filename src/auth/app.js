@@ -8,16 +8,22 @@
 
 define([
 	'angular',
-	'angularLoadingBar'
+	'angularLoadingBar',
+	'angularCookies'
 ], function (angular) {
 
 	return angular.module('Auth', [
-		'chieffancypants.loadingBar'
-    ]).run(['$rootScope', '$state', function ($rootScope, $state) {
+		'chieffancypants.loadingBar',
+		'ngCookies'
+    ]).run(['$rootScope', '$state', '$cookies', function ($rootScope, $state, $cookies) {
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
             var requireLogin = toState.requireLogin;
 
-			// TODO: check cookie
+			if ($cookies.get('user')) {
+				// TODO: login on the server as well
+				$rootScope.currentUser = JSON.parse($cookies.get('user'));
+			}
+
             if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
                 event.preventDefault();
 				$rootScope.originalState = {

@@ -14,6 +14,7 @@ require.config({
         bootstrap: '../assets/vendor/bootstrap/dist/js/bootstrap.min',
 
         angular: '../assets/vendor/angular/angular',
+        angularCookies: '../assets/vendor/angular-cookies/angular-cookies.min',
         angularUIRouter: '../assets/vendor/angular-ui-router/release/angular-ui-router.min',
         angularUIBootstrap: '../assets/vendor/angular-bootstrap/ui-bootstrap-tpls.min',
         angularLoadingBar: '../assets/vendor/angular-loading-bar/build/loading-bar',

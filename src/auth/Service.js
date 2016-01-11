@@ -29,8 +29,10 @@ define(['auth/app'], function (Auth) {
 					});
                 },
                 logout: function () {
-					// delete $rootScope.currentUser;
-					// delete cookie
+					$http.post('/logout').then(function () {
+						delete $rootScope.currentUser;
+						$state.go('login');
+					});
                 }
             }
 		}]);

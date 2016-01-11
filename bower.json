@@ -21,6 +21,7 @@
     "angular-ui-router": "~0.2.15",
     "angular-bootstrap": "angular-ui-bootstrap-bower#~1.0.0",
     "eonasdan-bootstrap-datetimepicker": "~4.17.37",
-    "bootstrap": "~3.3.6"
+    "bootstrap": "~3.3.6",
+    "angular-cookies": "~1.4.8"
   }
 }

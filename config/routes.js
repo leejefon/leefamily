@@ -11,12 +11,13 @@ module.exports.routes = {
 
     // General
     'GET /login'               : 'HomeController.index',
+    'GET /logout'              : 'HomeController.index',
     'GET /reset_password'      : 'HomeController.index',
     'GET /reset_password/:key' : 'HomeController.index',
 
     // General API
     'POST /login'              : 'HomeController.login',
-    'GET  /logout'             : 'HomeController.logout',
+    'POST /logout'             : 'HomeController.logout',
     'POST /reset_password'     : 'HomeController.reset_password',
     'POST /reset_password/:key': 'HomeController.reset_password',
 

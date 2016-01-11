@@ -17,20 +17,19 @@ module.exports = (function () {
         Passport.authenticate('local', function (err, user) {
             if (err) { return next(err); }
             if (!user) { return res.status(401).json({ error: 'user not found' }); }
-            // TODO: store in cookie as well
 
-            delete user.password;
-            delete user.password_reset_key;
+            res.cookie('user', JSON.stringify(_.pick(user, ['id', 'name', 'email', 'role'])));
             req.logIn(user, function (err) {
                 if (err) { return res.json(err); }
-                return res.json(user);
+                return res.json(_.pick(user, ['id', 'name', 'email', 'role']));
             });
         })(req, res);
     }
 
     function logout (req, res) {
         req.logout();
-        return res.redirect('/');
+        res.clearCookie('user');
+        return res.json();
     }
 
     function reset_password (req, res) {
