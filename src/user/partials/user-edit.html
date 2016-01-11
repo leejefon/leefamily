@@ -13,12 +13,6 @@
             </div>
 
             <div class="col-md-8 personal-info">
-                <!-- <div class="alert alert-info alert-dismissable">
-                    <a class="panel-close close" data-dismiss="alert">×</a>
-                    <i class="fa fa-coffee"></i>
-                    This is an <strong>.alert</strong>. Use this to show important messages to the user.
-                </div> -->
-
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Name:</label>
@@ -26,7 +20,7 @@
                             <span class="input-group-addon">
                                 <span class="fa fa-user"></span>
                             </span>
-                            <input class="form-control" type="text" placeholder="李玠鋒" />
+                            <input class="form-control" type="text" placeholder="李玠鋒" ng-model="user.name" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -35,7 +29,7 @@
                             <span class="input-group-addon">
                                 <span class="fa fa-envelope-o"></span>
                             </span>
-                            <input class="form-control" type="text" placeholder="my@email.com" />
+                            <input class="form-control" type="email" placeholder="my@email.com" ng-model="user.email" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -44,7 +38,7 @@
                             <span class="input-group-addon">
                                 <span class="fa fa-phone"></span>
                             </span>
-                            <input class="form-control" type="text" placeholder="07-123-4567" />
+                            <input class="form-control" type="text" placeholder="07-123-4567" ng-model="user.home_phone" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -53,7 +47,7 @@
                             <span class="input-group-addon">
                                 <span class="fa fa-mobile"></span>
                             </span>
-                            <input class="form-control" type="text" placeholder="0911-123-456" />
+                            <input class="form-control" type="text" placeholder="0911-123-456" ng-model="user.mobile_phone" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -62,7 +56,7 @@
                             <span class="input-group-addon">
                                 <span class="fa fa-location-arrow"></span>
                             </span>
-                            <input class="form-control" type="text" placeholder="台北市" />
+                            <input class="form-control" type="text" placeholder="台北市" ng-model="user.city" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -71,7 +65,7 @@
                             <span class="input-group-addon">
                                 <span class="fa fa-home"></span>
                             </span>
-                            <input class="form-control" type="text" placeholder="台南市鹽水區中山路14號" />
+                            <input class="form-control" type="text" placeholder="台南市鹽水區中山路14號" ng-model="user.address" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -80,7 +74,7 @@
                             <span class="input-group-addon">
                                 <span class="fa fa-calendar"></span>
                             </span>
-                            <input class="form-control" type="text" placeholder="1980/01/01" />
+                            <input class="form-control" type="text" placeholder="1980/01/01" ng-model="user.birthday" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -89,7 +83,7 @@
                             <span class="input-group-addon">
                                 <span class="fa fa-lock"></span>
                             </span>
-                            <input class="form-control" type="password" />
+                            <input class="form-control" type="password" placeholder="password" ng-model="user.password" />
                         </div>
                     </div>
                 </form>

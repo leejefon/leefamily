@@ -5,7 +5,7 @@
  * @created :: 2016/01/09
  */
 
-define(['user/services', 'bootstrapDatetimePicker'], function (UserServices) {
+define(['user/services', 'user/services/User', 'bootstrapDatetimePicker'], function (UserServices) {
 
     return UserServices
 
@@ -15,7 +15,7 @@ define(['user/services', 'bootstrapDatetimePicker'], function (UserServices) {
                     var modalInstance = $modal.open({
                         size: 'lg',
                         templateUrl: "/templates/user/partials/user-create.html",
-                        controller: ['$scope', function ($scope) {
+                        controller: ['$scope', 'User', function ($scope, User) {
                             $scope.newUser = {
                                 name: '',
                                 email: '',
@@ -30,7 +30,12 @@ define(['user/services', 'bootstrapDatetimePicker'], function (UserServices) {
                             };
 
                             $scope.save = function () {
-
+                                User.create($scope.newUser).then(function (response) {
+                                    $scope.close();
+                                    toastr.success(response.data.name + ' is added successfully!');
+                                }, function (response) {
+                                    toastr.error('Something went wrong');
+                                });
                             };
 
                             $scope.close = function () {
@@ -49,6 +54,9 @@ define(['user/services', 'bootstrapDatetimePicker'], function (UserServices) {
                                 allowInputToggle: true,
                                 format: 'YYYY/MM/DD',
                                 viewMode: 'decades'
+                            }).on("dp.change", function() {
+                                // HACK: datetime input isn't binded to ng-model
+                                $("#birthdayInput input").change();
                             });
                         }, 1000);
                     });
@@ -62,13 +70,12 @@ define(['user/services', 'bootstrapDatetimePicker'], function (UserServices) {
                         size: 'lg',
                         templateUrl: "/templates/user/partials/user-edit.html",
                         controller: ['$scope', 'User', function ($scope, User) {
-                            $scope.user = $stateParams;
-                            // User.getByName($stateParams.name).then(function (user) {
-                            //     $scope.user = user;
-                            // });
+                            User.getByName($stateParams.name).then(function (response) {
+                                $scope.user = response.data;
+                            });
 
                             $scope.save = function () {
-
+                                $scope.close();
                             };
 
                             $scope.close = function () {
@@ -80,7 +87,14 @@ define(['user/services', 'bootstrapDatetimePicker'], function (UserServices) {
                     modalInstance.opened.then(function () {
                         // TODO: need to find a bettery way to resolve dom ready
                         $timeout(function () {
-                            $('#birthdayInput').datetimepicker();
+                            $('#birthdayInput').datetimepicker({
+                                allowInputToggle: true,
+                                format: 'YYYY/MM/DD',
+                                viewMode: 'decades'
+                            }).on("dp.change", function() {
+                                // HACK: datetime input isn't binded to ng-model
+                                $("#birthdayInput input").change();
+                            });
                         }, 1000);
                     });
 
@@ -92,11 +106,11 @@ define(['user/services', 'bootstrapDatetimePicker'], function (UserServices) {
                     var modalInstance = $modal.open({
                         size: 'lg',
                         templateUrl: "/templates/user/partials/user.html",
-                        controller: ['$scope', function ($scope) {
-                            $scope.user = $stateParams;
-                            // User.getByName($stateParams.name).then(function (user) {
-                            //     $scope.user = user;
-                            // });
+                        controller: ['$scope', 'User', function ($scope, User) {
+                            User.getByName($stateParams.name).then(function (response) {
+                                // TODO: close if no user found
+                                $scope.user = response.data;
+                            });
 
                             $scope.close = function () {
                                 $scope.$close();

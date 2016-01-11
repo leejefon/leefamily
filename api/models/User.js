@@ -13,8 +13,7 @@ module.exports = (function () {
 
     var attributes = {
         name: {
-            type: Sequelize.STRING,
-            unique: true
+            type: Sequelize.STRING
         },
         email: {
             type: Sequelize.STRING,
@@ -53,9 +52,6 @@ module.exports = (function () {
         role: {
             type: Sequelize.ENUM('admin', 'regular'),
             defaultValue: 'regular'
-        },
-        algolia_object_id: {
-            type: Sequelize.INTEGER
         }
     };
 
@@ -71,7 +67,7 @@ module.exports = (function () {
         // paranoid: true,
         // deletedAt: 'deleted_at',
         hooks: {
-            beforeCreate: function (user, cb) {
+            beforeCreate: function (user, options, cb) {
                 bcrypt.genSalt(10, function(err, salt) {
                     bcrypt.hash(user.password, salt, function (err, hash) {
                         if (err) {
@@ -84,7 +80,7 @@ module.exports = (function () {
                     });
                 });
             },
-            beforeUpdate: function (user, cb) {
+            beforeUpdate: function (user, options, cb) {
                 if (user.password) {
                     bcrypt.genSalt(10, function(err, salt) {
                         bcrypt.hash(user.password, salt, function (err, hash) {
