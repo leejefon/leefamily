@@ -21,18 +21,19 @@ module.exports.routes = {
     'POST /reset_password/:key': 'HomeController.reset_password',
 
     // Admin API
-    'PUT    /user'      : 'UserController.add',
-    'POST   /user/:id'  : 'UserController.update',
-    'DELETE /user/:id'  : 'UserController.remove',
+    'PUT    /user'             : 'UserController.add',
+    'POST   /user/:id'         : 'UserController.update',
+    'POST   /user/:id/avatar'  : 'UserController.updateAvatar',
+    'DELETE /user/:id'         : 'UserController.remove',
 
     // Admin Only
-    'GET    /create'    : 'HomeController.index',
-    'GET    /:name/edit': 'HomeController.index',
+    'GET    /create'           : 'HomeController.index',
+    'GET    /:name/edit'       : 'HomeController.index',
 
     // User API
-    'GET    /users'       : 'UserController.list',
-    'GET    /user/:name'  : 'UserController.getByName',
+    'GET    /users'            : 'UserController.list',
+    'GET    /user/:name'       : 'UserController.getByName',
 
     // User
-    'GET    /:name'        : 'HomeController.index'
+    'GET    /:name'            : 'HomeController.index'
 };

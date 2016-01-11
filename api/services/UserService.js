@@ -10,7 +10,7 @@ var client = algoliasearch(process.env.ALGOLIA_APPLICATION_ID, process.env.ALGOL
 
 module.exports = (function () {
 
-    var index = client.initIndex('leefamily');
+    var index = client.initIndex('leefamily' + (process.env.NODE_ENV === 'development' ? '-dev' : ''));
 
     function list (cb) {
         User.findAll({
@@ -46,7 +46,15 @@ module.exports = (function () {
     }
 
     function update (id, newData, cb) {
-        cb(null, newData);
+        delete newData.id;
+
+        User.update(newData, {
+            where: {
+                id: id
+            }
+        }).then(function (result) {
+            cb(null, result);
+        });
     }
 
     function _addToAlgolia (user, cb) {
@@ -55,6 +63,7 @@ module.exports = (function () {
         delete user.id;
         delete user.password;
         delete user.password_reset_key;
+        delete user.avatar;
         delete user.role;
         delete user.updated_at;
         delete user.created_at;

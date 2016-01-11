@@ -1,0 +1,11 @@
+<div class="text-center avatar-upload">
+    <img ng-src="{{ avatar }}" class="avatar img-circle" alt="avatar" id="avatar" width="200" />
+    <br /><br />
+    <input type="file" class="form-control" id="newAvatar" onchange="angular.element(this).scope().updateAvatar()" />
+
+    <style type="text/css">
+    .avatar-upload {
+        padding-left: 40px;
+    }
+    </style>
+</div>

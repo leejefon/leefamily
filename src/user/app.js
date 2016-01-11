@@ -11,6 +11,7 @@ define([
 	'user/Controller',
     'user/Routes',
 	'user/directives/Card',
+	'user/directives/Avatar',
 	'home/directives/Header'
 ], function (angular) {
 
