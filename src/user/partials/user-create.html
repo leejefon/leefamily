@@ -1,0 +1,110 @@
+<div ng-cloak>
+    <div class="modal-header">
+        <h3 class="modal-title">New User</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="//placehold.it/200" class="avatar img-circle" alt="avatar" />
+                    <br /><br />
+                    <input type="file" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-md-8 personal-info">
+                <!-- <div class="alert alert-info alert-dismissable">
+                    <a class="panel-close close" data-dismiss="alert">×</a>
+                    <i class="fa fa-coffee"></i>
+                    This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                </div> -->
+
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Name:</label>
+                        <div class="col-lg-8 input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-user"></span>
+                            </span>
+                            <input class="form-control" type="text" placeholder="李玠鋒" ng-modal="newUser.name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Email:</label>
+                        <div class="col-lg-8 input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-envelope-o"></span>
+                            </span>
+                            <input class="form-control" type="text" placeholder="my@email.com" ng-modal="newUser.email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Home Phone:</label>
+                        <div class="col-lg-8 input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-phone"></span>
+                            </span>
+                            <input class="form-control" type="text" placeholder="07-123-4567" ng-modal="newUser.home_phone" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Mobile Phone:</label>
+                        <div class="col-lg-8 input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-mobile"></span>
+                            </span>
+                            <input class="form-control" type="text" placeholder="0911-123-456" ng-modal="newUser.mobile_phone" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Current City:</label>
+                        <div class="col-lg-8 input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-location-arrow"></span>
+                            </span>
+                            <input class="form-control" type="text" placeholder="台北市" ng-modal="newUser.city" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Home Address:</label>
+                        <div class="col-md-8 input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-home"></span>
+                            </span>
+                            <input class="form-control" type="text" placeholder="台南市鹽水區中山路14號" ng-modal="newUser.address" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Birthday:</label>
+                        <div class="col-lg-8 input-group" id="birthdayInput">
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                            <input class="form-control" type="text" placeholder="1980/01/01" ng-modal="newUser.birthday" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Password:</label>
+                        <div class="col-md-8 input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-lock"></span>
+                            </span>
+                            <input class="form-control" type="password" ng-modal="newUser.password" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+        <button class="btn btn-danger" type="button" ng-click="close()">Cancel</button>
+    </div>
+</div>
+
+<style type="text/css">
+.input-group .fa {
+    width: 16px;
+    font-size: 18px;
+}
+</style>

@@ -50,9 +50,6 @@ module.exports = (function () {
         facebook: {
             type: Sequelize.STRING
         },
-        familyOf: {
-            type: Sequelize.INTEGER
-        },
         role: {
             type: Sequelize.ENUM('admin', 'regular'),
             defaultValue: 'regular'

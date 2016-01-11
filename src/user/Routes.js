@@ -9,7 +9,7 @@ define(['angular', 'angularUIRouter', 'user/services/UserModal'], function (angu
 
 	return angular.module('User.routes', ['ui.router', 'User.services'])
 
-		.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider) {
+		.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider) {
 			$stateProvider
 				.state('user', {
 					url: '/',
@@ -20,31 +20,29 @@ define(['angular', 'angularUIRouter', 'user/services/UserModal'], function (angu
 				})
 
 				.state('user.create', {
-					url: '/create',
+					url: 'create',
 					requireLogin: true,
-					onEnter: ['$stateParams', '$state', 'UserModal', function ($stateParams, $state, UserModal) {
-						UserModal.create($stateParams, $state);
+					onEnter: ['$state', 'UserModal', function ($state, UserModal) {
+						UserModal.create($state);
 					}]
 				})
 
 				.state('user.edit', {
-					url: '/:name/edit',
+					url: ':name/edit',
 					requireLogin: true,
-					onEnter: ['$stateParams', '$state', 'UserModal', function ($stateParams, $state, UserModal) {
-						UserModal.edit($stateParams, $state);
+					onEnter: ['$state', '$stateParams', 'UserModal', function ($state, $stateParams, UserModal) {
+						UserModal.edit($state, $stateParams);
 					}]
 				})
 
 				.state('user.view', {
 					url: ':name',
 					requireLogin: true,
-					onEnter: ['$stateParams', '$state', 'UserModal', function ($stateParams, $state, UserModal) {
-						UserModal.view($stateParams, $state);
+					onEnter: ['$state', '$stateParams', 'UserModal', function ($state, $stateParams, UserModal) {
+						UserModal.view($state, $stateParams);
 					}]
 				});
 
 			$locationProvider.html5Mode(true);
-
-			// $urlRouterProvider.otherwise('/');
 		}]);
 });

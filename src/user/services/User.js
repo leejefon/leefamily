@@ -12,24 +12,26 @@ define(['user/services', 'algoliasearch'], function (UserServices, algoliasearch
 
     return UserServices
 
-        .factory('User', [function () {
+        .factory('User', ['$http', '$q', function ($http, $q) {
             return {
-                list: function (cb) {
-                    cb(null, [
-                        { name: '李玠鋒 Jeff Lee' },
-                        { name: '李宜樺 Eva Lee' },
-                        { name: '李沂璉' },
-                        { name: '翁慧蘭' },
-                        { name: '戴路嘉 Luke Day' },
-                        { name: '劉家銘' },
-                        { name: 'Hello World' }
-                    ]);
+                list: function () {
+                    return $q(function (resolve) {
+                        resolve([
+                            { name: '李玠鋒 Jeff Lee' },
+                            { name: '李宜樺 Eva Lee' },
+                            { name: '李沂璉' },
+                            { name: '翁慧蘭' },
+                            { name: '戴路嘉 Luke Day' },
+                            { name: '劉家銘' },
+                            { name: 'Hello World' }
+                        ]);
+                    });
                 },
-                search: function (q, cb) {
-                    index.search(q, cb);
+                search: function (q) {
+                    return index.search(q);
                 },
-                get: function () {
-
+                getByName: function (name) {
+                    return $http.get('/');
                 }
             };
         }]);

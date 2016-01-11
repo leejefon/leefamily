@@ -9,6 +9,9 @@ require.config({
     paths: {
         jquery: '../assets/vendor/jquery/dist/jquery',
         toastr: '../assets/vendor/toastr/toastr',
+        bootstrapDatetimePicker: '../assets/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min',
+        moment: '../assets/vendor/moment/min/moment.min',
+        bootstrap: '../assets/vendor/bootstrap/dist/js/bootstrap.min',
 
         angular: '../assets/vendor/angular/angular',
         angularUIRouter: '../assets/vendor/angular-ui-router/release/angular-ui-router.min',
@@ -19,6 +22,7 @@ require.config({
     shim: {
         jquery: { exports: '$' },
         toastr: ['jquery'],
+        bootstrapDatetimePicker: ['jquery', 'moment', 'bootstrap'],
 
         angular: { exports: 'angular', deps: ['jquery'] },
         angularUIRouter: ['angular'],

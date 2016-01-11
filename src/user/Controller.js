@@ -12,11 +12,11 @@ define(['angular', 'user/services/User'], function (angular) {
 		.controller('UserController', ['$scope', '$state', '$stateParams', 'User', function ($scope, $state, $stateParams, User) {
 
 			$scope.index = function () {
-				User.list(function (err, data) {
+				User.list().then(function (data) {
 					$scope.users = data;
 				});
 
-				// User.search('jeff', function (err, data) {
+				// User.search('jeff').then(function (data) {
 				// 	console.log(data);
 				// });
 			};

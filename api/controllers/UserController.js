@@ -7,19 +7,24 @@
 
 module.exports = (function () {
 
-    function add (req, res) {
+    function get (req, res) {
+        return res.json({});
+    }
 
+    function add (req, res) {
+        return res.json({});
     }
 
     function update (req, res) {
-
+        return res.json({});
     }
 
     function remove (req, res) {
-
+        return res.json({});
     }
 
     return {
+        get: get,
         add: add,
         update: update,
         remove: remove
