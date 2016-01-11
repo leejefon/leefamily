@@ -103,3 +103,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .social-links li {
     margin: 5px;
 }
+
+.social-inputs {
+    padding-left: 40px;
+}
