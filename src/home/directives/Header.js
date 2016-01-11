@@ -15,7 +15,7 @@ define(['home/directives'], function (HomeDirectives) {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/templates/home/partials/header.html',
-                controller: ['$scope', function ($scope) {
+                controller: ['$rootScope', function ($rootScope) {
 
                 }],
                 link: function (scope, elem, attrs) {

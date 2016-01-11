@@ -22,16 +22,24 @@ define(['angular', 'angularUIRouter', 'user/services/UserModal'], function (angu
 				.state('user.create', {
 					url: 'create',
 					requireLogin: true,
-					onEnter: ['$state', 'UserModal', function ($state, UserModal) {
-						UserModal.create($state);
+					onEnter: ['$state', '$rootScope', 'UserModal', function ($state, $rootScope, UserModal) {
+						if ($rootScope.currentUser.role !== 'admin') {
+							$state.go('user');
+						} else {
+							UserModal.create($state);
+						}
 					}]
 				})
 
 				.state('user.edit', {
 					url: ':name/edit',
 					requireLogin: true,
-					onEnter: ['$state', '$stateParams', 'UserModal', function ($state, $stateParams, UserModal) {
-						UserModal.edit($state, $stateParams);
+					onEnter: ['$state', '$stateParams', '$rootScope', 'UserModal', function ($state, $stateParams, $rootScope, UserModal) {
+						if ($rootScope.currentUser.role !== 'admin' && $rootScope.currentUser.name !== $stateParams.name) {
+							$state.go('user');
+						} else {
+							UserModal.edit($state, $stateParams);
+						}
 					}]
 				})
 

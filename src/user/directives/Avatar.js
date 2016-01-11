@@ -20,7 +20,7 @@ define(['user/directives'], function (UserDirectives) {
                         $scope.user = response.data;
 
                         var defaultAvatar = '/img/profile.jpg';
-                        if (!$scope.user.avatar) {
+                        if (!$scope.user || !$scope.user.avatar) {
                             $scope.avatar = defaultAvatar;
                         } else {
                             $scope.avatar = 'data:' + $scope.user.avatar.split('@')[0] + ';base64,' + $scope.user.avatar.split('@')[1];

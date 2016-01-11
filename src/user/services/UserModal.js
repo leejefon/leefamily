@@ -111,7 +111,7 @@ define(['user/services', 'user/services/User', 'bootstrapDatetimePicker'], funct
                     var modalInstance = $modal.open({
                         size: 'lg',
                         templateUrl: "/templates/user/partials/user.html",
-                        controller: ['$scope', 'User', function ($scope, User) {
+                        controller: ['$scope', '$rootScope', 'User', function ($scope, $rootScope, User) {
                             User.getByName($stateParams.name).then(function (response) {
                                 if (!response.data) {
                                     toastr.error('User ' + $stateParams.name + ' is not found');
