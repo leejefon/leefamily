@@ -19,6 +19,13 @@ define(['angular', 'angularUIRouter'], function (angular) {
 					requireLogin: false
 				})
 
+				.state('logout', {
+					url: '/logout',
+					controller: 'HomeController',
+					action: 'logout',
+					requireLogin: false
+				})
+
 				.state('reset_password', {
 					url: '/reset_password',
 					templateUrl: '/templates/home/partials/reset_password.html',

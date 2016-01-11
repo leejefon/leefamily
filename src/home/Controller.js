@@ -22,6 +22,11 @@ define(['angular', 'auth/Service'], function (angular) {
 				};
 			};
 
+			$scope.logout = function () {
+				Auth.logout();
+				$state.go('login');
+			};
+
 			$scope.reset_password = function () {
 				var key = $stateParams.key;
 
