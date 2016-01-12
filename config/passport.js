@@ -21,7 +21,7 @@ Passport.use(new LocalStrategy({
     usernameField: 'email',
     passReqToCallback: true,
 }, function (req, email, password, done) {
-    User.findOne({ email: email }).then(function (user) {
+    User.findOne({ where: { email: email }}).then(function (user) {
         if (!user || user.length < 1) { return done(null, false, { message: 'Incorrect username/password' }); }
 
         bcrypt.compare(password, user.password, function (err, res) {

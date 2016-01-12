@@ -33,15 +33,15 @@ define(['angular', 'user/services/User'], function (angular) {
 								})[0];
 
 								return $.extend({}, temp, {
-									name: user._highlightResult.name.value,
-									email: user._highlightResult.email.value,
-									home_phone: user._highlightResult.home_phone.value,
-									mobile_phone: user._highlightResult.mobile_phone.value,
-									city: user._highlightResult.city.value,
-									address: user._highlightResult.address.value,
-									birthday: user._highlightResult.birthday.value,
-									facebook: user._highlightResult.facebook.value,
-									line: user._highlightResult.line.value
+									name: user._highlightResult.name ? user._highlightResult.name.value : user.name,
+									email: user._highlightResult.email ? user._highlightResult.email.value : user.email,
+									home_phone: user._highlightResult.home_phone ? user._highlightResult.home_phone.value : user.home_phone,
+									mobile_phone: user._highlightResult.mobile_phone ? user._highlightResult.mobile_phone.value : user.mobile_phone,
+									city: user._highlightResult.city ? user._highlightResult.city.value : user.city,
+									address: user._highlightResult.address ? user._highlightResult.address.value : user.address,
+									birthday: user._highlightResult.birthday ? user._highlightResult.birthday.value : user.birthday,
+									facebook: user._highlightResult.facebook ? user._highlightResult.facebook.value : user.facebook,
+									line: user._highlightResult.line ? user._highlightResult.line.value : user.line,
 								});
 							});
 						});
