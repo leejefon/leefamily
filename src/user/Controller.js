@@ -18,14 +18,10 @@ define(['angular', 'user/services/User'], function (angular) {
 				});
 			};
 
-			$scope.triggerSearch = function () {
-				$state.go('user.search', { q: $scope.q }, { reload: true });
-			};
-
 			$scope.search = function () {
 				// HACK: $stateParams supposed to work, but doesn't, so use $location
 				// $scope.q = $stateParams.q;
-				$scope.q = $location.url().split('q=')[1];
+				$scope.q = $scope.q || $location.url().split('q=')[1];
 				User.list().then(function (response) {
 					$scope.users = response.data;
 				}).then(function () {
@@ -52,6 +48,24 @@ define(['angular', 'user/services/User'], function (angular) {
 					});
 				});
 			};
+
+			$scope.triggerSearch = function () {
+				// NOTE: $state.go doesn't call the search, probably because same controller, I can also do { reload: true }
+				$state.go('user.search', { q: $scope.q });
+				$scope.search();
+			};
+
+			$scope.clearSearch = function () {
+				$state.go('user');
+				$scope.index();
+			};
+
+			$(document).keyup(function (e) {
+				var ESC_KEY = 27
+				if (e.keyCode === ESC_KEY) {
+					$scope.clearSearch();
+				}
+			});
 
 			$scope.init = function () {
 				if ($state.current.action) {
