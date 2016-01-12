@@ -13,7 +13,9 @@ define(['user/directives'], function (UserDirectives) {
             return {
                 restrict: 'E',
                 replace: true,
-                scope: true,
+                scope: {
+                    viewOnly: '='
+                },
                 templateUrl: '/templates/user/partials/avatar.html',
                 controller: ['$scope', '$stateParams', 'User', function ($scope, $stateParams, User) {
                     User.getByName($stateParams.name).then(function (response) {
