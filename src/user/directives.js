@@ -6,7 +6,8 @@
  */
 
 define([
-    'angular'
+    'angular',
+    'angularSanitize'
 ], function (angular) {
-    return angular.module('User.directives', []);
+    return angular.module('User.directives', ['ngSanitize']);
 });

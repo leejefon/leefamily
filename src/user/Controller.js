@@ -18,9 +18,28 @@ define(['angular', 'user/services/User'], function (angular) {
 			};
 
 			$scope.search = function () {
-				// User.search('jeff').then(function (data) {
-				// 	console.log(data);
-				// });
+				// TODO: add search state
+				User.search($scope.q).then(function (data) {
+					$scope.$apply(function () {
+						$scope.users = data.hits.map(function (user) {
+							var temp = $.grep($scope.users, function (u) {
+								return 'leefamily-' + u.id === user.objectID;
+							})[0];
+
+							return $.extend({}, temp, {
+								name: user._highlightResult.name.value,
+								email: user._highlightResult.email.value,
+								home_phone: user._highlightResult.home_phone.value,
+								mobile_phone: user._highlightResult.mobile_phone.value,
+								city: user._highlightResult.city.value,
+								address: user._highlightResult.address.value,
+								birthday: user._highlightResult.birthday.value,
+								facebook: user._highlightResult.facebook.value,
+								line: user._highlightResult.line.value
+							});
+						});
+					});
+				});
 			};
 
 			$scope.init = function () {

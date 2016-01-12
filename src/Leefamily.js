@@ -15,6 +15,7 @@ require.config({
 
         angular: '../assets/vendor/angular/angular',
         angularCookies: '../assets/vendor/angular-cookies/angular-cookies.min',
+        angularSanitize: '../assets/vendor/angular-sanitize/angular-sanitize.min',
         angularUIRouter: '../assets/vendor/angular-ui-router/release/angular-ui-router.min',
         angularUIBootstrap: '../assets/vendor/angular-bootstrap/ui-bootstrap-tpls.min',
         angularLoadingBar: '../assets/vendor/angular-loading-bar/build/loading-bar',
@@ -26,6 +27,8 @@ require.config({
         bootstrapDatetimePicker: ['jquery', 'moment', 'bootstrap'],
 
         angular: { exports: 'angular', deps: ['jquery'] },
+        angularCookies: ['angular'],
+        angularSanitize: ['angular'],
         angularUIRouter: ['angular'],
         angularLoadingBar: ['angular'],
         algoliasearch: { exports: 'algoliasearch' }
