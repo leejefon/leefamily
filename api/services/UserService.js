@@ -46,33 +46,35 @@ module.exports = (function () {
     }
 
     function update (id, newData, cb) {
-        delete newData.id;
-
-        User.update(newData, {
+        User.update(_.omit(newData, 'id'), {
             where: {
                 id: id
             }
         }).then(function (result) {
-            cb(null, result);
+            if (newData.avatar) {
+                cb(null, result);
+            } else {
+                _updateToAlgolia(newData, function (err, content) {
+                    cb(null, result);
+                });
+            }
         });
     }
 
     function _addToAlgolia (user, cb) {
         var objectID = 'leefamily-' + user.id;
 
-        delete user.id;
-        delete user.password;
-        delete user.password_reset_key;
-        delete user.avatar;
-        delete user.role;
-        delete user.updated_at;
-        delete user.created_at;
-
-        index.addObject(user, objectID, cb);
+        index.addObject(_.omit(user, [
+            'id', 'password', 'password_reset_key', 'avatar', 'role', 'created_at', 'updated_at'
+        ]), objectID, cb);
     }
 
-    function _updateToAlgolia () {
+    function _updateToAlgolia (user, cb) {
+        user.objectID = 'leefamily-' + user.id;
 
+        index.saveObject(_.omit(user, [
+            'id', 'password', 'password_reset_key', 'role', 'created_at', 'updated_at'
+        ]),  cb);
     }
 
     return {

@@ -75,6 +75,7 @@ define(['user/services', 'user/services/User', 'bootstrapDatetimePicker'], funct
                             });
 
                             $scope.save = function () {
+                                delete $scope.user.avatar;
                                 User.edit($scope.user.id, $scope.user).then(function (response) {
                                     $scope.close();
                                     toastr.success($scope.user.name + ' is updated successfully!');
