@@ -49,7 +49,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     text-align: center;
 }
 
-#search_form input[type="text"] {
+#search_box {
     height: 55px;
     font-size: 35px;
     display: inline-block;
@@ -67,11 +67,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     vertical-align: top;
 }
 
-#search_form input[type="text"]:focus {
+#search_box:focus {
     border-bottom: 1px solid #BBB;
 }
 
-#search_form input[type="submit"] {
+#search_submit {
     height: 50px;
     width: 50px;
     display: inline-block;
@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     vertical-align: top;
 }
 
-#search_form input[type="submit"]:hover, #search_form input[type="text"]:focus ~ input[type="submit"] {
+#search_submit:hover, #search_box:focus ~ #search_submit {
     opacity: 0.6;
 }
 

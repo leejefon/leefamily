@@ -36,5 +36,6 @@ module.exports.routes = {
     'GET    /user/:name'       : 'UserController.getByName',
 
     // User
+    'GET    /search'           : 'HomeController.index',
     'GET    /:name'            : 'HomeController.index'
 };

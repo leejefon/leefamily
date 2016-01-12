@@ -19,6 +19,14 @@ define(['angular', 'angularUIRouter', 'user/services/UserModal'], function (angu
 					requireLogin: true
 				})
 
+				.state('user.search', {
+					url: 'search?q',
+					templateUrl: '/templates/user/partials/index.html',
+					controller: 'UserController',
+					action: 'search',
+					requireLogin: true
+				})
+
 				.state('user.create', {
 					url: 'create',
 					requireLogin: true,

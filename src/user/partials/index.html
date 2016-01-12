@@ -2,8 +2,11 @@
     <header></header>
 
     <div id="search_form">
-        <input id="search_box" ng-model="q" type="text" placeholder="Search" />
-        <input id="search_submit" value="" type="submit" ng-click="search()" />
+        <form>
+            <input id="search_box" ng-model="q" type="text" placeholder="Search" tabindex="1" />
+            <input id="search_submit" type="submit" value="" ng-click="triggerSearch()" />
+            <!-- <a id="search_submit" ui-sref="user.search({ q: q })" ui-sref-opts="{reload: true}"></a> -->
+        </form>
     </div>
 
     <hr />
