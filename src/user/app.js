@@ -10,6 +10,7 @@ define([
 	'angularLoadingBar',
 	'user/Controller',
     'user/Routes',
+	'user/HtmlFilter',
 	'user/directives/Card',
 	'user/directives/Avatar',
 	'home/directives/Header'
@@ -19,6 +20,7 @@ define([
 		'chieffancypants.loadingBar',
 		'User.controllers',
         'User.routes',
+		'User.filters',
 		'User.directives',
 		'Home.directives'
 	]);

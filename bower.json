@@ -15,14 +15,13 @@
   ],
   "dependencies": {
     "angular-loading-bar": "~0.8.0",
-    "angular-route": "~1.4.4",
-    "toastr": "~2.1.1",
-    "requirejs": "~2.1.20",
+    "angular-cookies": "~1.4.8",
+    "angular-sanitize": "~1.4.8",
     "angular-ui-router": "~0.2.15",
     "angular-bootstrap": "angular-ui-bootstrap-bower#~1.0.0",
     "eonasdan-bootstrap-datetimepicker": "~4.17.37",
     "bootstrap": "~3.3.6",
-    "angular-cookies": "~1.4.8",
-    "angular-sanitize": "~1.4.8"
+    "toastr": "~2.1.1",
+    "requirejs": "~2.1.20"
   }
 }
