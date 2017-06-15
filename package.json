@@ -6,7 +6,7 @@
   "private": true,
   "main": "app.js",
   "engines": {
-    "node": "4.x"
+    "node": "6.x"
   },
   "dependencies": {
     "algoliasearch": "^3.10.2",
