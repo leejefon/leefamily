@@ -3,30 +3,19 @@
  * - Route: /
  *
  * @author: Jeff Lee
- * @createdAt: 2016/09/07
+ * @createdAt: 2017/06/14
  */
 
-import React from 'react';
-import SlideShow from '../home/SlideShow';
-import Steps from '../home/Steps';
-import GetStarted from '../home/GetStarted';
-import SignUpForm from '../home/SignUpForm';
-import SeenOn from '../home/SeenOn';
-import FeaturedCompanies from '../home/FeaturedCompanies';
-import FeaturedProjects from '../home/FeaturedProjects';
+import React, { Component } from 'react';
 
-function Home() {
-  return (
-    <div className="Home">
-      <SlideShow />
-      <Steps />
-      <GetStarted />
-      <SignUpForm />
-      <FeaturedCompanies />
-      <FeaturedProjects />
-      <SeenOn />
-    </div>
-  );
+class Home extends Component {
+  render() {
+    return (
+      <div className="Home">
+
+      </div>
+    );
+  }
 }
 
 export default Home;

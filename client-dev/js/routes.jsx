@@ -10,6 +10,9 @@ import Route from 'react-router/lib/Route';
 
 import App from './components/App';
 import Home from './components/pages/Home';
+import Login from './components/pages/Login';
+import ContactForm from './components/pages/ContactForm';
+import Contact from './components/pages/Contact';
 
 import Auth from './utils/Auth';
 
@@ -22,7 +25,10 @@ function checkAuth(nextState, replaceState) {
 const appRoutes = (
   <Route component={App}>
     <Route path="/" component={Home} onEnter={checkAuth} />
-    <Route path="/login" component={Home} />
+    <Route path="/login" component={Login} />
+    <Route path="/c/new" component={ContactForm} />
+    <Route path="/c/:name" component={Contact} />
+    <Route path="/c/:name/edit" component={ContactForm} />
   </Route>
 );
 
