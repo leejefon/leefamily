@@ -2,7 +2,7 @@
  * AmazonS3 Model
  *
  * @author: Jeff Lee
- * @createdAt: 2016/10/11
+ * @createdAt: 2017/06/15
  */
 
 module.exports = (AmazonS3) => {

@@ -14,27 +14,23 @@
     ]
   },
   "User": {
-    "dataSource": "mongodb",
+    "dataSource": "mysql",
     "public": false
   },
   "AccessToken": {
-    "dataSource": "mongodb",
+    "dataSource": "mysql",
     "public": false
   },
   "ACL": {
-    "dataSource": "mongodb",
+    "dataSource": "mysql",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mongodb",
+    "dataSource": "mysql",
     "public": false
   },
   "Role": {
-    "dataSource": "mongodb",
-    "public": false
-  },
-  "Email": {
-    "dataSource": "mailgun",
+    "dataSource": "mysql",
     "public": false
   },
   "AmazonS3": {
@@ -42,55 +38,7 @@
     "public": true
   },
   "user": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "organization": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "organizationUser": {
-    "dataSource": "mongodb",
-    "public": false
-  },
-  "organizationUpdate": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "organizationReview": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "starOrganization": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "project": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "projectUser": {
-    "dataSource": "mongodb",
-    "public": false
-  },
-  "projectUpdate": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "projectReview": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "starProject": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "stripeUser": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "transaction": {
-    "dataSource": "mongodb",
+    "dataSource": "mysql",
     "public": true
   }
 }

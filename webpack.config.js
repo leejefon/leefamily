@@ -15,11 +15,7 @@ module.exports = (() => {
     'react-dom',
     'react-intl',
     'react-redux',
-    'react-remarkable',
-    'react-router',
-    'react-facebook-login',
-    'react-stripe-checkout',
-    'react-simplemde-editor'
+    'react-router'
   ];
 
   const lib = [
@@ -27,11 +23,8 @@ module.exports = (() => {
     'redux',
     'redux-thunk',
     'redux-immutable',
-    'opbeat-react',
-    'raven-js',
     'react-ga',
     'classnames',
-    'lodash/core',
     'es6-promise',
     'whatwg-fetch'
   ];
@@ -45,8 +38,7 @@ module.exports = (() => {
     };
     plugins = [
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
-        'process.env.BASE_URL': JSON.stringify(process.env.BASE_URL || 'https://www.redpocket.io')
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
       }),
       new webpack.optimize.CommonsChunkPlugin({
         names: ['react', 'lib'],
@@ -92,8 +84,7 @@ module.exports = (() => {
     };
     plugins = [
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-        'process.env.BASE_URL': JSON.stringify(process.env.BASE_URL || 'http://localhost:3000')
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
       }),
       new webpack.optimize.CommonsChunkPlugin({
         names: ['react', 'lib'],

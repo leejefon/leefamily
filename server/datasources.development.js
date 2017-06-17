@@ -1,14 +1,8 @@
 module.exports = {
-  mongodb: {
-    name: 'mongodb',
-    connector: 'mongodb',
-    url: process.env.MONGODB_URI
-  },
-  mailgun: {
-    name: 'mailgun',
-    connector: 'loopback-connector-mailgun',
-    apikey: process.env.MAILGUN_API_KEY,
-    domain: 'redpocket.io'
+  mysql: {
+    name: 'mysql',
+    connector: 'mysql',
+    url: process.env.CLEARDB_DATABASE_URL
   },
   amazonS3: {
     name: 'amazonS3',
