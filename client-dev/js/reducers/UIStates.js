@@ -5,9 +5,9 @@
  * @createdAt: 2016/09/07
  */
 
-import React from 'react';
+// import React from 'react';
 import cookie from 'react-cookie';
-import ImmutablePropTypes from 'react-immutable-proptypes';
+// import ImmutablePropTypes from 'react-immutable-proptypes';
 import Immutable from 'immutable';
 
 const initialStateEmpty = Immutable.fromJS({
@@ -48,37 +48,37 @@ const initialStateEmpty = Immutable.fromJS({
   suggestionBoxSuccess: false
 });
 
-export const uiStatePropTypes = ImmutablePropTypes.mapContains({
-  currentlySending: React.PropTypes.bool,
-  showLoginModal: React.PropTypes.bool,
-  showRegisterModal: React.PropTypes.bool,
-  showAddProjectModal: React.PropTypes.bool,
-  showAddOrganizationModal: React.PropTypes.bool,
-  showDeleteProjectModal: React.PropTypes.bool,
-  showDeleteOrganizationModal: React.PropTypes.bool,
-  projectToDelete: React.PropTypes.string,
-  organizationToDelete: React.PropTypes.string,
-
-  currentUser: ImmutablePropTypes.mapContains({
-    id: React.PropTypes.string,
-    email: React.PropTypes.string,
-    emailVerified: React.PropTypes.bool,
-    name: React.PropTypes.string,
-    avatar: React.PropTypes.string,
-    bio: React.PropTypes.string,
-    city: React.PropTypes.string,
-    url: React.PropTypes.string,
-    created: React.PropTypes.date,
-    totalContributedAmount: React.PropTypes.number,
-    totalContributedCount: React.PropTypes.number
-  }),
-  flashMessage: ImmutablePropTypes.mapContains({
-    type: React.PropTypes.string,
-    message: React.PropTypes.string
-  }),
-  comingSoonSignUpSuccess: React.PropTypes.bool,
-  suggestionBoxSuccess: React.PropTypes.bool
-});
+// export const uiStatePropTypes = ImmutablePropTypes.mapContains({
+//   currentlySending: React.PropTypes.bool,
+//   showLoginModal: React.PropTypes.bool,
+//   showRegisterModal: React.PropTypes.bool,
+//   showAddProjectModal: React.PropTypes.bool,
+//   showAddOrganizationModal: React.PropTypes.bool,
+//   showDeleteProjectModal: React.PropTypes.bool,
+//   showDeleteOrganizationModal: React.PropTypes.bool,
+//   projectToDelete: React.PropTypes.string,
+//   organizationToDelete: React.PropTypes.string,
+//
+//   currentUser: ImmutablePropTypes.mapContains({
+//     id: React.PropTypes.string,
+//     email: React.PropTypes.string,
+//     emailVerified: React.PropTypes.bool,
+//     name: React.PropTypes.string,
+//     avatar: React.PropTypes.string,
+//     bio: React.PropTypes.string,
+//     city: React.PropTypes.string,
+//     url: React.PropTypes.string,
+//     created: React.PropTypes.date,
+//     totalContributedAmount: React.PropTypes.number,
+//     totalContributedCount: React.PropTypes.number
+//   }),
+//   flashMessage: ImmutablePropTypes.mapContains({
+//     type: React.PropTypes.string,
+//     message: React.PropTypes.string
+//   }),
+//   comingSoonSignUpSuccess: React.PropTypes.bool,
+//   suggestionBoxSuccess: React.PropTypes.bool
+// });
 
 function restoreState() {
   if (process.env.NODE_ENV !== 'test') {
