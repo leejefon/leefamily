@@ -1,8 +1,2 @@
-*.log
-*.out
-*.swo
-*.swp
-.DS_Store
 .env
 node_modules
-client/*

@@ -1,0 +1,1 @@
+export const TOGGLE_USER_MODAL = 'TOGGLE_USER_MODAL';
