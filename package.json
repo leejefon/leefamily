@@ -1,15 +1,14 @@
 {
   "name": "leefamily",
-  "description": "Lee Family Member Directory",
-  "author": "Jeff Lee",
+  "author": "Jeff Lee <leejefon@gmail.com>",
   "version": "2.0.0",
   "private": true,
+  "engines": {
+    "node": "8.x"
+  },
   "repository": {
     "type": "GitHub",
     "url": "https://github.com/leejefon/leefamily.git"
-  },
-  "engines": {
-    "node": "8.x"
   },
   "dependencies": {
     "@feathersjs/authentication": "^2.1.0",
