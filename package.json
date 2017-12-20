@@ -20,9 +20,9 @@
     "@feathersjs/feathers": "^3.0.2",
     "@feathersjs/socketio": "^3.0.1",
     "algoliasearch": "^3.23.0",
-    "body-parser": "^1.17.1",
     "compression": "^1.6.2",
     "cors": "^2.8.1",
+    "crypto": "^1.0.1",
     "dotenv": "^4.0.0",
     "feathers-sequelize": "^3.0.0",
     "helmet": "^3.5.0",
@@ -32,14 +32,14 @@
     "winston": "^2.3.1"
   },
   "devDependencies": {
-    "eslint": "^4.0.0",
-    "mocha": "^3.2.0",
+    "eslint": "^4.13.1",
+    "mocha": "^4.0.1",
     "request": "^2.83.0",
-    "request-promise": "^4.1.1"
+    "request-promise": "^4.2.2"
   },
   "scripts": {
-    "eslint": "eslint src/. test/. --config .eslintrc",
-    "mocha": "mocha test --recursive",
+    "eslint": "eslint src test",
+    "mocha": "mocha test --recursive --exit",
     "test": "npm run eslint && npm run mocha",
     "start": "node src"
   }
