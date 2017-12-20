@@ -2,49 +2,52 @@ const path = require('path');
 const cors = require('cors');
 const helmet = require('helmet');
 const compress = require('compression');
-const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
+const logger = require('winston');
 
-const feathers = require('feathers');
-const configuration = require('feathers-configuration');
-const hooks = require('feathers-hooks');
-const rest = require('feathers-rest');
-const socketio = require('feathers-socketio');
+const feathers = require('@feathersjs/feathers');
+const express = require('@feathersjs/express');
+const configuration = require('@feathersjs/configuration');
+const rest = require('@feathersjs/express/rest');
+const socketio = require('@feathersjs/socketio');
 
-const authentication = require('./authentication');
-const services = require('./services');
 const middleware = require('./middleware');
+const services = require('./services');
 const appHooks = require('./app.hooks');
+const channels = require('./channels');
+const authentication = require('./authentication');
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
-const app = feathers();
+const app = express(feathers());
 
 // Load app configuration
 app.configure(configuration(path.join(__dirname, '..')));
 
-// Enable CORS, security, compression, favicon and body parsing
 app.use(cors());
 app.use(helmet());
 app.use(compress());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 
 // Host the public folder
-app.use('/', feathers.static(app.get('public')));
-app.use('/login', feathers.static(app.get('public')));
+app.use('/', express.static(app.get('public')));
+app.use('/login', express.static(app.get('public')));
 
-// Set up Plugins and providers
-app.configure(hooks());
 app.configure(rest());
 app.configure(socketio());
 
+app.configure(middleware);
 app.configure(authentication);
 app.configure(services);
-app.configure(middleware); // always has to be last
+app.configure(channels);
+
+app.use(express.notFound());
+app.use(express.errorHandler({ logger }));
+
 app.hooks(appHooks);
 
 module.exports = app;
