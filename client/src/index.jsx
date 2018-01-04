@@ -7,13 +7,11 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Router from 'react-router/lib/Router';
-import browserHistory from 'react-router/lib/browserHistory';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers/Reducers';
-import routes from './routes';
+import App from './pages/App';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
@@ -21,7 +19,7 @@ const store = createStoreWithMiddleware(reducers);
 try {
   ReactDOM.render(
     <Provider store={store}>
-      <Router history={browserHistory} routes={routes} />
+      <App />
     </Provider>,
     document.getElementById('app')
   );

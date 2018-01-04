@@ -44,7 +44,9 @@ module.exports = function(app) {
       type: Sequelize.ENUM('admin', 'regular')
     }
   }, {
-    classMethods: {}
+    classMethods: {},
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
   });
 
   return users;

@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-// import client from '../utils/feathers';
+import { connect } from 'react-redux';
+import { fetchUsers } from '../actions';
 
 class Dashboard extends Component {
+  componentWillMount() {
+    this.props.dispatch(fetchUsers());
+  }
+
   render() {
     return (
       <div>
@@ -11,4 +16,10 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+function mapStateToProps(state) {
+  return {
+    uiState: state.get('uiReducer')
+  };
+}
+
+export default connect(mapStateToProps)(Dashboard);

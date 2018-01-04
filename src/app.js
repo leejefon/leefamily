@@ -35,7 +35,6 @@ app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 
 // Host the public folder
 app.use('/', express.static(app.get('public')));
-app.use('/login', express.static(app.get('public')));
 
 app.configure(rest());
 app.configure(socketio());
