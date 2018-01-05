@@ -13,6 +13,8 @@ import thunk from 'redux-thunk';
 import reducers from './reducers/Reducers';
 import App from './pages/App';
 
+import './utils/i18n';
+
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
