@@ -1,17 +1,15 @@
 :root {
-    --input-padding-x: .75rem;
+    /* --input-padding-x: .75rem; */
+    --input-padding-y: 0;
     --input-padding-y: .75rem;
 }
 
-html, body, #app {
+html, body {
   height: 100%
 }
 
 #app {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
+  min-height: 100%;
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #f5f5f5;
@@ -29,7 +27,8 @@ html, body, #app {
 
 .form-float-label-group > label {
     position: absolute;
-    top: 0;
+    font-size: 16px;
+    top: 16px;
     left: 0;
     display: block;
     width: 100%;
@@ -70,6 +69,7 @@ html, body, #app {
 .form-float-label-group input:not(:placeholder-shown) ~ label {
     padding-top: calc(var(--input-padding-y) / 3);
     padding-bottom: calc(var(--input-padding-y) / 3);
-    font-size: 12px;
     color: #777;
+    font-size: 12px;
+    top: 0;
 }

@@ -19,6 +19,7 @@
     "@feathersjs/express": "^1.2.2",
     "@feathersjs/feathers": "^3.1.5",
     "@feathersjs/socketio": "^3.2.1",
+    "@sendgrid/mail": "^6.2.1",
     "compression": "^1.7.2",
     "cors": "^2.8.4",
     "crypto": "^1.0.1",

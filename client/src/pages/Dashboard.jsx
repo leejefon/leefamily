@@ -30,7 +30,7 @@ class Dashboard extends Component {
                       <CardText>
                         {user.email}
                       </CardText>
-                      <Button>Update</Button>
+                      <Button color="primary" size="sm">Update</Button>
                     </CardBody>
                   </Card>
                 </Col>

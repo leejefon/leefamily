@@ -5,7 +5,7 @@ import { toggleLanguage } from '../utils/i18n';
 class Header extends Component {
   render() {
     return (
-      <Nav pills>
+      <Nav pills className="justify-content-end">
         <NavItem>
           <NavLink onClick={() => toggleLanguage()} active>
             <i className="fa fa-language" />

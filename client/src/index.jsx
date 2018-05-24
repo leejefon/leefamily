@@ -14,7 +14,6 @@ import reducers from './reducers/Reducers';
 import App from './pages/App';
 
 import './utils/i18n';
-import './css/custom.css';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
