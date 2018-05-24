@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { I18n } from 'react-i18next';
+import classnames from 'classnames';
 import {
   Row, Col, Button,
   Card, CardImg, CardText, CardBody, CardTitle
 } from 'reactstrap';
-import Header from '../components/Header';
 import { fetchUsers } from '../actions';
 
 class Dashboard extends Component {
@@ -18,8 +18,7 @@ class Dashboard extends Component {
       <I18n ns="translations">
         {t => (
           <div className="container">
-            <Header />
-            <h1>{t('title')}</h1>
+            <h2 className={classnames('text-center', 'text-info', 'mb-4')}>{t('title')}</h2>
             <Row>
               {this.props.data.users.map(user => (
                 <Col sm="3" key={user.id}>

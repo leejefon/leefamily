@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../components/Header';
 import Dashboard from './Dashboard';
 import Login from './Login';
 import client from '../utils/feathers';
@@ -23,7 +24,12 @@ class App extends Component {
   }
 
   render() {
-    return this.state.loggedIn ? (<Dashboard />) : (<Login />);
+    return (
+      <>
+        <Header />
+        {this.state.loggedIn ? (<Dashboard />) : (<Login />)}
+      </>
+    );
   }
 }
 

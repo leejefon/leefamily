@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { I18n } from 'react-i18next';
 import classnames from 'classnames';
 import client from '../utils/feathers';
 
@@ -38,37 +39,41 @@ class Login extends Component {
 
   render() {
     return (
-      <div className={styles.login}>
-        <Form className={classnames(styles.formWrapper, 'p-1')}>
-          <h2 className={classnames('text-center', 'text-info', 'mb-4')}>Lee Family Contact</h2>
+      <I18n ns="translations">
+        {t => (
+          <div className={styles.login}>
+            <Form className={classnames(styles.formWrapper, 'p-1')}>
+              <h2 className={classnames('text-center', 'text-info', 'mb-4')}>{t('title')}</h2>
 
-          <FormGroup className="form-float-label-group">
-            <Input
-              type="email"
-              id="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={e => this.updateField('email', e.target.value)}
-            />
-            <Label for="email">Email</Label>
-          </FormGroup>
-          <FormGroup className="form-float-label-group">
-            <Input
-              type="password"
-              id="password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={e => this.updateField('password', e.target.value)}
-            />
-            <Label for="password">Password</Label>
-          </FormGroup>
+              <FormGroup className="form-float-label-group">
+                <Input
+                  type="email"
+                  id="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={e => this.updateField('email', e.target.value)}
+                />
+                <Label for="email">Email</Label>
+              </FormGroup>
+              <FormGroup className="form-float-label-group">
+                <Input
+                  type="password"
+                  id="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={e => this.updateField('password', e.target.value)}
+                />
+                <Label for="password">Password</Label>
+              </FormGroup>
 
-          <div className="text-center">
-            <Button color="info" size="lg" outline onClick={() => this.login()}>Login</Button>
-            <Button color="info" size="lg" outline onClick={() => this.signup()}>Sign Up</Button>
+              <div className="text-center">
+                <Button color="info" size="lg" outline onClick={() => this.login()}>Login</Button>
+                <Button color="info" size="lg" outline onClick={() => this.signup()}>Sign Up</Button>
+              </div>
+            </Form>
           </div>
-        </Form>
-      </div>
+        )}
+      </I18n>
     );
   }
 }
