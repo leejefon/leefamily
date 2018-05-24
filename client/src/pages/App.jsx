@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
 import Dashboard from './Dashboard';
-import Login from './Login';
+import DefaultLayout from './DefaultLayout';
 import client from '../utils/feathers';
+
+import '../css/custom.css';
 
 class App extends Component {
   constructor() {
@@ -24,12 +25,7 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <>
-        <Header />
-        {this.state.loggedIn ? (<Dashboard />) : (<Login />)}
-      </>
-    );
+    return this.state.loggedIn ? (<Dashboard />) : (<DefaultLayout />)
   }
 }
 

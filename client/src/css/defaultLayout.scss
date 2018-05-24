@@ -1,13 +1,13 @@
-.login {
+.main {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
   height: 100vh;
+}
 
-  .formWrapper {
-    width: 100%;
-    max-width: 420px;
-    margin: auto;
-  }
+.formWrapper {
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
 }

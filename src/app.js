@@ -8,7 +8,7 @@ const logger = require('winston');
 const feathers = require('@feathersjs/feathers');
 const express = require('@feathersjs/express');
 const configuration = require('@feathersjs/configuration');
-// const rest = require('@feathersjs/express/rest');
+const rest = require('@feathersjs/express/rest');
 const socketio = require('@feathersjs/socketio');
 
 const services = require('./services');
@@ -34,7 +34,7 @@ app.use(express.json());
 // Host the public folder
 app.use('/', express.static(app.get('public')));
 
-// app.configure(rest());
+app.configure(express.rest());
 app.configure(socketio());
 
 app.configure(authentication);

@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 
 const users = require('./users/users.service.js');
+const resetPassword = require('./resetPassword/resetPassword.service.js');
 
 module.exports = function() {
   const app = this;
@@ -12,6 +13,7 @@ module.exports = function() {
   app.set('sequelize', sequelize);
 
   app.configure(users);
+  app.configure(resetPassword);
 
   // Setup relationships
   const models = sequelize.models;

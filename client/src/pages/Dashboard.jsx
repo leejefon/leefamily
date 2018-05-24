@@ -6,6 +6,7 @@ import {
   Row, Col, Button,
   Card, CardImg, CardText, CardBody, CardTitle
 } from 'reactstrap';
+import Header from '../components/Header';
 import { fetchUsers } from '../actions';
 
 class Dashboard extends Component {
@@ -15,29 +16,32 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <I18n ns="translations">
-        {t => (
-          <div className="container">
-            <h2 className={classnames('text-center', 'text-info', 'mb-4')}>{t('title')}</h2>
-            <Row>
-              {this.props.data.users.map(user => (
-                <Col sm="3" key={user.id}>
-                  <Card>
-                    <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-                    <CardBody>
-                      <CardTitle>{user.name}</CardTitle>
-                      <CardText>
-                        {user.email}
-                      </CardText>
-                      <Button color="primary" size="sm">Update</Button>
-                    </CardBody>
-                  </Card>
-                </Col>
-              ))}
-            </Row>
-          </div>
-        )}
-      </I18n>
+      <>
+        <Header />
+        <I18n ns="translations">
+          {t => (
+            <div className="container">
+              <h2 className={classnames('text-center', 'text-primary', 'p-4')}>{t('title')}</h2>
+              <Row>
+                {this.props.data.users.map(user => (
+                  <Col sm="3" key={user.id}>
+                    <Card>
+                      <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+                      <CardBody>
+                        <CardTitle>{user.name}</CardTitle>
+                        <CardText>
+                          {user.email}
+                        </CardText>
+                        <Button color="primary" size="sm">Update</Button>
+                      </CardBody>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </div>
+          )}
+        </I18n>
+      </>
     );
   }
 }
