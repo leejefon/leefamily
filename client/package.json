@@ -7,10 +7,10 @@
     "node": "8.x"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
     "@feathersjs/authentication-client": "^1.0.2",
     "@feathersjs/feathers": "^3.1.4",
     "@feathersjs/socketio-client": "^1.1.0",
+    "classnames": "^2.2.5",
     "i18next": "^11.3.2",
     "i18next-fetch-backend": "^0.1.0",
     "immutable": "^3.8.2",
@@ -42,11 +42,12 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
-    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.9.0",
-    "sass-loader": "^6.0.6",
+    "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
-    "webpack": "^3.10.0"
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.4"
   },
   "scripts": {
     "start": "webpack --progress --colors --watch",

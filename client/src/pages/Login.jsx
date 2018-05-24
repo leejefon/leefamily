@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import classnames from 'classnames';
 import client from '../utils/feathers';
+
+import styles from '../css/login.scss';
 
 class Login extends Component {
   constructor() {
@@ -26,34 +29,34 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h1>Login</h1>
+      <Form className={classnames(styles.formWrapper, 'p-1')}>
+        <h2 className={classnames('text-center', 'text-info', 'mb-4')}>Lee Family Contact</h2>
 
-        <Form>
-          <FormGroup>
-            <Label for="email">Email</Label>
-            <Input
-              type="email"
-              id="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={e => this.updateField('email', e.target.value)}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="password">Password</Label>
-            <Input
-              type="password"
-              id="password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={e => this.updateField('password', e.target.value)}
-            />
-          </FormGroup>
+        <FormGroup className="form-float-label-group">
+          <Input
+            type="email"
+            id="email"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={e => this.updateField('email', e.target.value)}
+          />
+          <Label for="email">Email</Label>
+        </FormGroup>
+        <FormGroup className="form-float-label-group">
+          <Input
+            type="password"
+            id="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={e => this.updateField('password', e.target.value)}
+          />
+          <Label for="password">Password</Label>
+        </FormGroup>
 
-          <Button color="primary" onClick={() => this.login()}>Login</Button>
-        </Form>
-      </div>
+        <div className="text-center">
+          <Button color="info" size="lg" outline onClick={() => this.login()}>Login</Button>
+        </div>
+      </Form>
     );
   }
 }

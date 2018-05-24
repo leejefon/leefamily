@@ -23,13 +23,7 @@ class App extends Component {
   }
 
   render() {
-    const children = this.state.loggedIn ? (<Dashboard />) : (<Login />);
-
-    return (
-      <div className="app">
-        {children}
-      </div>
-    );
+    return this.state.loggedIn ? (<Dashboard />) : (<Login />);
   }
 }
 
