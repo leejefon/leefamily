@@ -15,7 +15,7 @@ class Header extends Component {
         {t => (
           <Navbar light className="container mb-4">
             <NavbarBrand href="/" className="mr-auto text-primary">
-              <i className="fa fa-home" />&nbsp;&nbsp;
+              <i className="fa fa-home mr-2" />
               {t('title')}
             </NavbarBrand>
             <Nav pills className={classnames('justify-content-end', fixedTop)}>

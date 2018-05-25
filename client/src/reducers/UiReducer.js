@@ -3,7 +3,8 @@ import * as Actions from '../actions';
 
 const initialState = Immutable.fromJS({
   showUserModal: false,
-  userModalAction: '',
+  showUserForm: false,
+  userFormAction: '',
   selectedUser: null,
 
   alertType: null,
@@ -15,7 +16,12 @@ function uiReducer(state = initialState, action) {
     case Actions.TOGGLE_USER_MODAL:
       return state.merge({
         showUserModal: action.data.show,
-        userModalAction: action.data.action,
+        selectedUser: action.data.data
+      });
+    case Actions.TOGGLE_USER_FORM:
+      return state.merge({
+        showUserForm: action.data.show,
+        userFormAction: action.data.action,
         selectedUser: action.data.data
       });
     case Actions.SET_ALERT:

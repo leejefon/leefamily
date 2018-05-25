@@ -1,6 +1,7 @@
 import client from '../utils/feathers';
 
 export const TOGGLE_USER_MODAL = 'TOGGLE_USER_MODAL';
+export const TOGGLE_USER_FORM = 'TOGGLE_USER_FORM';
 export const SET_ALERT = 'SET_AERT';
 export const SET_USERS = 'SET_USERS';
 export const UPDATE_USER = 'UPDATE_USER';
