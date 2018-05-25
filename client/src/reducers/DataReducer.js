@@ -19,6 +19,10 @@ function dataReducer(state = initialState, action) {
       return state.merge({
         users: action.data
       });
+    case Actions.SET_FILTERED_USER:
+      return state.merge({
+        filteredUsers: action.data
+      });
     case Actions.UPDATE_USER:
       return state;
     default:

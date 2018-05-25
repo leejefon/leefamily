@@ -32,9 +32,20 @@ class ResetPasswordRequest extends Component {
 
     const { email } = this.state;
 
-    return client.service('api/resetPassword')
+    client.service('api/resetPassword')
       .create({ email })
-      .then(() => {
+      .then((response) => {
+        if (response.length === 0) {
+          this.props.dispatch({
+            type: Actions.SET_ALERT,
+            data: {
+              type: 'danger',
+              message: 'No email found'
+            }
+          });
+          return;
+        }
+
         this.props.dispatch({
           type: Actions.SET_ALERT,
           data: {

@@ -7,7 +7,6 @@
 
 import React, { Component } from 'react';
 import { I18n } from 'react-i18next';
-import classnames from 'classnames';
 
 class Footer extends Component {
   render() {

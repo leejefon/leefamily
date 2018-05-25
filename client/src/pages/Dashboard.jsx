@@ -8,7 +8,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { I18n } from 'react-i18next';
-import classnames from 'classnames';
 import {
   Button, Col, Row, FormGroup, Input, Label,
   Card, CardBody, CardImg, CardText, CardTitle
@@ -54,6 +53,9 @@ class Dashboard extends Component {
   }
 
   render() {
+    const users = this.props.data.filteredUsers.length > 0 ?
+      this.props.data.filteredUsers : this.props.data.users;
+
     return (
       <>
         <Header />
@@ -82,7 +84,7 @@ class Dashboard extends Component {
               </div>
 
               <Row>
-                {this.props.data.users.map(user => (
+                {users.map(user => (
                   <Col lg="3" md="4" sm="6" key={user.id} className="mb-4">
                     <Card onClick={() => this.openUserModal(user)}>
                       <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />

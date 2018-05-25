@@ -10,7 +10,7 @@ import Dashboard from './Dashboard';
 import DefaultLayout from './DefaultLayout';
 import client from '../utils/feathers';
 
-import '../css/custom.css';
+import '../css/global.css';
 
 class App extends Component {
   constructor() {
