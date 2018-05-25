@@ -21,7 +21,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 const app = express(feathers());
 
-// Load app configuration
 app.configure(configuration(path.join(__dirname, '..')));
 
 app.use(cors());
@@ -31,10 +30,9 @@ app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 // app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 
-// Host the public folder
 app.use('/', express.static(app.get('public')));
 
-app.configure(express.rest());
+app.configure(rest());
 app.configure(socketio());
 
 app.configure(authentication);

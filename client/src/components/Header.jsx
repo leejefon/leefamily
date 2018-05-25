@@ -13,12 +13,12 @@ class Header extends Component {
     return (
       <I18n ns="translations">
         {t => (
-          <Navbar light className="container mb-4">
+          <Navbar light className={classnames('container', 'mb-4', fixedTop)}>
             <NavbarBrand href="/" className="mr-auto text-primary">
               <i className="fa fa-home mr-2" />
               {t('title')}
             </NavbarBrand>
-            <Nav pills className={classnames('justify-content-end', fixedTop)}>
+            <Nav pills className="justify-content-end">
               <NavItem>
                 <NavLink active onClick={() => toggleLanguage()} style={{ cursor: 'pointer' }}>
                   <i className="fa fa-language" />

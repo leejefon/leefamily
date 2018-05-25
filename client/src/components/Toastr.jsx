@@ -8,7 +8,7 @@ class Toastr extends Component {
     if (props.ui.alertMsg) {
       setTimeout(() => {
         this.onDismiss();
-      }, 3000);
+      }, 5000);
     }
   }
 
@@ -28,8 +28,8 @@ class Toastr extends Component {
       <Alert
         isOpen={!!alertMsg}
         color={alertType || 'info'}
-        className="float-right mb-3 mr-3 position-absolute shadow"
-        style={{ width: '20%', bottom: 0, right: 0 }}
+        className="mb-3 mr-3 position-absolute shadow"
+        style={{ bottom: 0, right: 0, zIndex: 100 }}
         toggle={() => this.onDismiss()}
       >
         {alertMsg}

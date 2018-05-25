@@ -2,7 +2,8 @@ import Immutable from 'immutable';
 import * as Actions from '../actions';
 
 const initialState = Immutable.fromJS({
-  users: []
+  users: [],
+  filteredUsers: []
 });
 
 function dataReducer(state = initialState, action) {

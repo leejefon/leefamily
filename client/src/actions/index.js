@@ -22,3 +22,9 @@ export function fetchUsers() {
     });
   };
 }
+
+export function search(query) {
+  return (dispatch, getState) => {
+    const users = getState().get('dataReducer').get('users').toJS();
+  };
+}

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { I18n } from 'react-i18next';
 import classnames from 'classnames';
 import {
-  Button, Col, Row,
+  Button, Col, Row, FormGroup, Input, Label,
   Card, CardBody, CardImg, CardText, CardTitle
 } from 'reactstrap';
 import Header from '../components/Header';
@@ -15,6 +15,10 @@ import * as Actions from '../actions';
 class Dashboard extends Component {
   componentWillMount() {
     this.props.dispatch(Actions.fetchUsers());
+  }
+
+  updateField(name, value) {
+    this.setState({ [name]: value });
   }
 
   openUserModal(data) {
@@ -37,6 +41,10 @@ class Dashboard extends Component {
     })
   }
 
+  search(query) {
+    this.props.dispatch(Actions.search(query));
+  }
+
   render() {
     return (
       <>
@@ -46,9 +54,28 @@ class Dashboard extends Component {
         <I18n ns="translations">
           {t => (
             <div className="container">
+              <div className="d-flex justify-content-between">
+                <FormGroup className="form-float-label-group w-50">
+                  <Input
+                    type="text"
+                    id="search"
+                    placeholder="Search"
+                    onChange={e => this.search(e.target.value)}
+                  />
+                  <Label for="search">Search</Label>
+                </FormGroup>
+
+                <Button
+                  color="link"
+                  onClick={e => this.openUserForm('ADD')}
+                >
+                  <i className="fa fa-plus mr-2" />Add User
+                </Button>
+              </div>
+
               <Row>
                 {this.props.data.users.map(user => (
-                  <Col sm="3" key={user.id} className="mb-4">
+                  <Col lg="3" md="4" sm="6" key={user.id} className="mb-4">
                     <Card onClick={() => this.openUserModal(user)}>
                       <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                       <CardBody>
