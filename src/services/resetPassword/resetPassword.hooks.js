@@ -18,7 +18,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [sendmail()],
     update: [],
     patch: [],
     remove: []

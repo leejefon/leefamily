@@ -20,11 +20,14 @@ class ResetPassword {
 
   async create(data) {
     const User = this.app.service('users');
-    const newToken = Math.random().toString(36).substring(12);
+    const newToken = generateToken();
     const { email } = data;
 
+    // For the sendmail hook
+    data.token = newToken;
+
     return User.patch(null, {
-      password_reset_key: generateToken()
+      password_reset_key: newToken
     }, {
       query: { email }
     });
