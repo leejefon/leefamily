@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { I18n } from 'react-i18next';
 import classnames from 'classnames';
 import client from '../utils/feathers';
+import * as Actions from '../actions';
 import styles from '../css/defaultLayout.scss';
 
 class ResetPasswordRequest extends Component {
@@ -23,7 +25,16 @@ class ResetPasswordRequest extends Component {
 
     return client.service('api/resetPassword')
       .create({ email })
-      .then(() => window.location.href = '/');
+      .then(() => {
+        this.props.dispatch({
+          type: Actions.SET_ALERT,
+          data: {
+            type: 'success',
+            message: 'Email sent'
+          }
+        });
+        this.props.history.push('/');
+      });
   }
 
   render() {
@@ -54,4 +65,10 @@ class ResetPasswordRequest extends Component {
   }
 }
 
-export default ResetPasswordRequest;
+function mapStateToProps(state) {
+  return {
+    ui: state.get('uiReducer').toJS()
+  };
+}
+
+export default connect(mapStateToProps)(ResetPasswordRequest);

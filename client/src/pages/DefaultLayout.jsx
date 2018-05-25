@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { connect } from 'react-redux';
+import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
+import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { I18n } from 'react-i18next';
 import classnames from 'classnames';
 import Header from '../components/Header';
@@ -21,9 +22,22 @@ class DefaultLayout extends Component {
   }
 
   render() {
+    const { alertType, alertMsg } = this.props.ui;
+    const alertBox = alertMsg ? (
+      <Alert
+        color={alertType || 'info'}
+        className="float-right mb-3 mr-3 position-absolute shadow"
+        style={{ width: '20%', bottom: 0, right: 0 }}
+      >
+        {alertMsg}
+      </Alert>
+    ) : null;
+
     return (
       <>
         <Header fixedTop />
+        {alertBox}
+
         <I18n ns="translations">
           {t => (
             <div className={styles.main}>
@@ -38,4 +52,10 @@ class DefaultLayout extends Component {
   }
 }
 
-export default DefaultLayout;
+function mapStateToProps(state) {
+  return {
+    ui: state.get('uiReducer').toJS()
+  };
+}
+
+export default withRouter(connect(mapStateToProps)(DefaultLayout));

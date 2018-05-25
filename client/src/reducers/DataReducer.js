@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import * as Events from '../actions';
+import * as Actions from '../actions';
 
 const initialState = Immutable.fromJS({
   users: []
@@ -7,11 +7,11 @@ const initialState = Immutable.fromJS({
 
 function dataReducer(state = initialState, action) {
   switch (action.type) {
-    case Events.SET_USERS:
+    case Actions.SET_USERS:
       return state.merge({
         users: action.data
       });
-    case Events.UPDATE_USER:
+    case Actions.UPDATE_USER:
       return state;
     default:
       return state;

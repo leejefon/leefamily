@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { I18n } from 'react-i18next';
 import classnames from 'classnames';
 import {
-  Row, Col, Button,
-  Card, CardImg, CardText, CardBody, CardTitle
+  Alert, Button, Col, Row,
+  Card, CardBody, CardImg, CardText, CardTitle
 } from 'reactstrap';
 import Header from '../components/Header';
 import { fetchUsers } from '../actions';
@@ -15,9 +15,22 @@ class Dashboard extends Component {
   }
 
   render() {
+    const { alertType, alertMsg } = this.props.ui;
+    const alertBox = alertMsg ? (
+      <Alert
+        color={alertType || 'info'}
+        className="float-right mb-3 mr-3 position-absolute shadow"
+        style={{ width: '20%', bottom: 0, right: 0 }}
+      >
+        {alertMsg}
+      </Alert>
+    ) : null;
+
     return (
       <>
         <Header />
+        {alertBox}
+
         <I18n ns="translations">
           {t => (
             <div className="container">
@@ -49,7 +62,7 @@ class Dashboard extends Component {
 function mapStateToProps(state) {
   return {
     data: state.get('dataReducer').toJS(),
-    uiState: state.get('uiReducer')
+    ui: state.get('uiReducer').toJS()
   };
 }
 

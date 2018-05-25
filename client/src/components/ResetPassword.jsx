@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { I18n } from 'react-i18next';
 import classnames from 'classnames';
 import client from '../utils/feathers';
 import styles from '../css/defaultLayout.scss';
+import * as Actions from '../actions';
 
-class ResetPasswordRequest extends Component {
+class ResetPassword extends Component {
   constructor() {
     super();
 
@@ -16,13 +18,20 @@ class ResetPasswordRequest extends Component {
   }
 
   componentDidMount() {
-    const token = this.props.match.params.token;
+    const { token } = this.props.match.params;
 
     return client.service('api/resetPassword')
       .get(token)
       .then((data) => {
         if (!data || data.total === 0) {
-          window.location.href = '/'; // invalid, need to show alert
+          this.props.dispatch({
+            type: Actions.SET_ALERT,
+            data: {
+              type: 'danger',
+              message: 'Invalid token'
+            }
+          });
+          this.props.history.push('/'); // invalid, need to show alert
         }
       });
   }
@@ -32,12 +41,32 @@ class ResetPasswordRequest extends Component {
   }
 
   submit() {
-    const { newPassword: password } = this.state;
+    const { newPassword: password, confirmPassword } = this.state;
     const password_reset_key = this.props.match.params.token;
 
-    return client.service('api/resetPassword')
+    if (password !== confirmPassword) {
+      this.props.dispatch({
+        type: Actions.SET_ALERT,
+        data: {
+          type: 'danger',
+          message: 'Passwords do not match'
+        }
+      });
+      return;
+    }
+
+    client.service('api/resetPassword')
       .patch({ password_reset_key }, { password })
-      .then(() => window.location.href = '/');
+      .then(() => {
+        this.props.dispatch({
+          type: Actions.SET_ALERT,
+          data: {
+            type: 'success',
+            message: 'Password updated'
+          }
+        });
+        this.props.history.push('/');
+      });
   }
 
   render() {
@@ -79,4 +108,10 @@ class ResetPasswordRequest extends Component {
   }
 }
 
-export default ResetPasswordRequest;
+function mapStateToProps(state) {
+  return {
+    ui: state.get('uiReducer').toJS()
+  };
+}
+
+export default connect(mapStateToProps)(ResetPassword);
