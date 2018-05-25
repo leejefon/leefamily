@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { I18n } from 'react-i18next';
 import classnames from 'classnames';
 import client from '../utils/feathers';
 import styles from '../css/defaultLayout.scss';
+import * as Actions from '../actions';
 
 class Login extends Component {
   constructor() {
@@ -19,21 +21,31 @@ class Login extends Component {
     this.setState({ [name]: value });
   }
 
-  login() {
+  login(e) {
+    e.preventDefault();
+
     client.authenticate({
       strategy: 'local',
       email: this.state.email,
       password: this.state.password
-    }).catch(() => {});
+    }).catch(() => {
+      this.props.dispatch({
+        type: Actions.SET_ALERT,
+        data: {
+          type: 'danger',
+          message: 'Invalid email/password'
+        }
+      });
+    });
   }
 
-  signup() {
-    const { email, password } = this.state;
-
-    return client.service('users')
-      .create({ email, password })
-      .then(() => this.login());
-  }
+  // signup() {
+  //   const { email, password } = this.state;
+  //
+  //   return client.service('users')
+  //     .create({ email, password })
+  //     .then(() => this.login());
+  // }
 
   render() {
     return (
@@ -44,6 +56,7 @@ class Login extends Component {
 
             <FormGroup className="form-float-label-group">
               <Input
+                autoFocus
                 type="email"
                 id="email"
                 placeholder="Email"
@@ -64,8 +77,22 @@ class Login extends Component {
             </FormGroup>
 
             <div className="text-center">
-              <Button color="primary" size="lg" outline onClick={() => this.login()}>Login</Button>
-              <Button color="primary" size="lg" outline onClick={() => this.signup()}>Sign Up</Button>
+              <Button
+                outline
+                color="primary"
+                size="lg"
+                type="submit"
+                onClick={e => this.login(e)}
+              >
+                Login
+              </Button>
+              <Button
+                className="d-block m-auto"
+                color="link"
+                onClick={() => this.props.history.push('/resetPassword')}
+              >
+                Reset Password
+              </Button>
             </div>
           </Form>
         )}
@@ -74,4 +101,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+function mapStateToProps(state) {
+  return {
+    ui: state.get('uiReducer').toJS()
+  };
+}
+
+export default connect(mapStateToProps)(Login);

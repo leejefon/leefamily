@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
-import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { I18n } from 'react-i18next';
 import classnames from 'classnames';
 import Header from '../components/Header';
+import Toastr from '../components/Toastr';
 import Login from '../components/Login';
 import ResetPassword from '../components/ResetPassword';
 import ResetPasswordRequest from '../components/ResetPasswordRequest';
@@ -22,21 +23,10 @@ class DefaultLayout extends Component {
   }
 
   render() {
-    const { alertType, alertMsg } = this.props.ui;
-    const alertBox = alertMsg ? (
-      <Alert
-        color={alertType || 'info'}
-        className="float-right mb-3 mr-3 position-absolute shadow"
-        style={{ width: '20%', bottom: 0, right: 0 }}
-      >
-        {alertMsg}
-      </Alert>
-    ) : null;
-
     return (
       <>
         <Header fixedTop />
-        {alertBox}
+        <Toastr />
 
         <I18n ns="translations">
           {t => (

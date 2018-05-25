@@ -40,7 +40,9 @@ class ResetPassword extends Component {
     this.setState({ [name]: value });
   }
 
-  submit() {
+  submit(e) {
+    e.preventDefault();
+
     const { newPassword: password, confirmPassword } = this.state;
     const password_reset_key = this.props.match.params.token;
 
@@ -78,6 +80,7 @@ class ResetPassword extends Component {
 
             <FormGroup className="form-float-label-group">
               <Input
+                autoFocus
                 type="password"
                 id="newPassword"
                 placeholder="New Password"
@@ -99,7 +102,15 @@ class ResetPassword extends Component {
             </FormGroup>
 
             <div className="text-center">
-              <Button color="primary" size="lg" outline onClick={() => this.submit()}>Update Password</Button>
+              <Button
+                outline
+                color="primary"
+                size="lg"
+                type="submit"
+                onClick={e => this.submit(e)}
+              >
+                Update Password
+              </Button>
             </div>
           </Form>
         )}

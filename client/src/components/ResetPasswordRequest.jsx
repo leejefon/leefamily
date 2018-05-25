@@ -20,7 +20,9 @@ class ResetPasswordRequest extends Component {
     this.setState({ [name]: value });
   }
 
-  submit() {
+  submit(e) {
+    e.preventDefault();
+
     const { email } = this.state;
 
     return client.service('api/resetPassword')
@@ -46,6 +48,7 @@ class ResetPasswordRequest extends Component {
 
             <FormGroup className="form-float-label-group">
               <Input
+                autoFocus
                 type="email"
                 id="email"
                 placeholder="Email"
@@ -56,7 +59,22 @@ class ResetPasswordRequest extends Component {
             </FormGroup>
 
             <div className="text-center">
-              <Button color="primary" size="lg" outline onClick={() => this.submit()}>Send Email</Button>
+              <Button
+                outline
+                color="primary"
+                size="lg"
+                type="submit"
+                onClick={e => this.submit(e)}
+              >
+                Send Email
+              </Button>
+              <Button
+                className="d-block m-auto"
+                color="link"
+                onClick={() => this.props.history.push('/')}
+              >
+                Back to Login
+              </Button>
             </div>
           </Form>
         )}
