@@ -8,7 +8,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import Dropzone from 'react-dropzone';
 import { I18n } from 'react-i18next';
+import client from '../utils/feathers';
 import * as Actions from '../actions';
 
 class UserFormModal extends Component {
@@ -22,6 +24,44 @@ class UserFormModal extends Component {
     };
   }
 
+  addUser() {
+    console.log(this.state.data);
+  }
+
+  updateUser() {
+    console.log(this.props.ui.selectedUser);
+  }
+
+  updateData(name, value) {
+    let names = name;
+    let values = value;
+    if (!Array.isArray(names) && !Array.isArray(values)) {
+      names = [name];
+      values = [value];
+    }
+
+    const data = Object.assign({}, this.state.data);
+    for (let i = 0; i < names.length; i += 1) {
+      data[names[i]] = values[i];
+    }
+    this.setState({ data });
+  }
+
+
+  onDrop(acceptedFiles) {
+    const s3Upload = client.service('upload');
+    const ext = acceptedFiles[0].type.split('/')[1];
+
+    s3Upload.create({
+      id: `avatars/${Math.random().toString(36).slice(2)}.${ext}`,
+      buffer: acceptedFiles[0],
+      contentType: acceptedFiles[0].type
+    }).then((data) => {
+      console.log(data.id);
+      // this.updateData('avatar', data.id);
+    });
+  }
+
   close() {
     this.props.dispatch({
       type: Actions.TOGGLE_USER_FORM,
@@ -31,14 +71,6 @@ class UserFormModal extends Component {
         action: null
       }
     });
-  }
-
-  addUser() {
-    console.log(this.state.data);
-  }
-
-  updateUser() {
-    console.log(this.props.ui.selectedUser);
   }
 
   render() {
@@ -59,7 +91,7 @@ class UserFormModal extends Component {
               <ModalHeader toggle={() => this.close()}>{actionTitle}</ModalHeader>
 
               <ModalBody>
-
+                <Dropzone onDrop={this.onDrop} multiple={false} accept="image/jpeg,image/png" />
               </ModalBody>
 
               <ModalFooter>

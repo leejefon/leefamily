@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 
 const users = require('./users/users.service.js');
 const resetPassword = require('./resetPassword/resetPassword.service.js');
+const s3Upload = require('./s3Upload/s3Upload.service.js');
 
 module.exports = function() {
   const app = this;
@@ -14,6 +15,7 @@ module.exports = function() {
 
   app.configure(users);
   app.configure(resetPassword);
+  app.configure(s3Upload);
 
   // Setup relationships
   const models = sequelize.models;
