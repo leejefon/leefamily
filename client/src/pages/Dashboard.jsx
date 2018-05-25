@@ -8,6 +8,7 @@ import {
 } from 'reactstrap';
 import Header from '../components/Header';
 import Toastr from '../components/Toastr';
+import Footer from '../components/Footer';
 import UserModal from '../components/UserModal';
 import UserFormModal from '../components/UserFormModal';
 import * as Actions from '../actions';
@@ -99,12 +100,13 @@ class Dashboard extends Component {
                   </Col>
                 ))}
               </Row>
-
-              <UserFormModal />
-              <UserModal />
             </div>
           )}
         </I18n>
+
+        <Footer />
+        <UserFormModal />
+        <UserModal />
       </>
     );
   }
