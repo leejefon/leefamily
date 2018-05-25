@@ -1,5 +1,10 @@
 const express = require('@feathersjs/express');
 const hooks = require('./resetPassword.hooks');
+const util = require('../');
+
+const generateToken = () => Array.from(new Array(5))
+  .map(i => Math.random().toString(36).slice(2)) // 5 chars
+  .join('');
 
 class ResetPassword {
   setup(app) {
@@ -13,12 +18,29 @@ class ResetPassword {
     }).then(data => data);
   }
 
-  create() {
+  async create(data) {
+    const User = this.app.service('users');
+    const newToken = Math.random().toString(36).substring(12);
+    const { email } = data;
 
+    return User.patch(null, {
+      password_reset_key: generateToken()
+    }, {
+      query: { email }
+    });
   }
 
-  patch(password_reset_key) {
+  async patch(query, data) {
+    const User = this.app.service('users');
+    const { password_reset_key } = query;
+    const { password } = data;
 
+    return User.patch(null, {
+      password_reset_key: null,
+      password
+    }, {
+      query: { password_reset_key }
+    });
   }
 }
 

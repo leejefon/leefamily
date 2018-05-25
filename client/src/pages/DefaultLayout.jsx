@@ -20,26 +20,6 @@ class DefaultLayout extends Component {
     };
   }
 
-  updateField(name, value) {
-    this.setState({ [name]: value });
-  }
-
-  login() {
-    client.authenticate({
-      strategy: 'local',
-      email: this.state.email,
-      password: this.state.password
-    }).catch(() => {});
-  }
-
-  signup() {
-    const { email, password } = this.state;
-
-    return client.service('users')
-      .create({ email, password })
-      .then(() => this.login());
-  }
-
   render() {
     return (
       <>

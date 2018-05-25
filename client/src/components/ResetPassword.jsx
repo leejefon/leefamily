@@ -15,16 +15,29 @@ class ResetPasswordRequest extends Component {
     };
   }
 
+  componentDidMount() {
+    const token = this.props.match.params.token;
+
+    return client.service('api/resetPassword')
+      .get(token)
+      .then((data) => {
+        if (!data || data.total === 0) {
+          window.location.href = '/'; // invalid, need to show alert
+        }
+      });
+  }
+
   updateField(name, value) {
     this.setState({ [name]: value });
   }
 
   submit() {
-    const { newPassword } = this.state;
+    const { newPassword: password } = this.state;
+    const password_reset_key = this.props.match.params.token;
 
-    // return client.service('users')
-    //   .create({ email, password })
-    //   .then(() => this.login());
+    return client.service('api/resetPassword')
+      .patch({ password_reset_key }, { password })
+      .then(() => window.location.href = '/');
   }
 
   render() {
@@ -42,7 +55,7 @@ class ResetPasswordRequest extends Component {
                 value={this.state.newPassword}
                 onChange={e => this.updateField('newPassword', e.target.value)}
               />
-              <Label for="email">New Password</Label>
+              <Label for="newPassword">New Password</Label>
             </FormGroup>
 
             <FormGroup className="form-float-label-group">
@@ -53,7 +66,7 @@ class ResetPasswordRequest extends Component {
                 value={this.state.confirmPassword}
                 onChange={e => this.updateField('confirmPassword', e.target.value)}
               />
-              <Label for="email">Confirm Password</Label>
+              <Label for="confirmPassword">Confirm Password</Label>
             </FormGroup>
 
             <div className="text-center">

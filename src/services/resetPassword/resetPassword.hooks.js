@@ -1,5 +1,6 @@
 'use strict';
 
+const { hashPassword } = require('@feathersjs/authentication-local').hooks;
 const sendmail = require('../../hooks/sendmail');
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
     find: [],
     get: [],
     create: [],
-    update: [],
+    update: [hashPassword()],
     patch: [],
     remove: []
   },

@@ -21,9 +21,9 @@ class ResetPasswordRequest extends Component {
   submit() {
     const { email } = this.state;
 
-    // return client.service('users')
-    //   .create({ email, password })
-    //   .then(() => this.login());
+    return client.service('api/resetPassword')
+      .create({ email })
+      .then(() => window.location.href = '/');
   }
 
   render() {
