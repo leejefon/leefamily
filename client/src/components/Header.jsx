@@ -1,3 +1,10 @@
+/**
+ * Header
+ *
+ * @author: Jeff Lee
+ * @createdAt: 2018/05/24
+ */
+
 import React, { Component } from 'react';
 import { Nav, Navbar, NavbarBrand, NavItem, NavLink } from 'reactstrap';
 import { I18n } from 'react-i18next';

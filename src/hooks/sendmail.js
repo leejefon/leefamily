@@ -1,3 +1,10 @@
+/**
+ * sendmail hook
+ *
+ * @author: Jeff Lee
+ * @createdAt: 2018/05/24
+ */
+
 const Sendgrid = require('@sendgrid/mail');
 
 module.exports = function () {
@@ -17,5 +24,7 @@ module.exports = function () {
         Click <a href="${host}/resetPassword/${token}">here</a> to reset your password
       `,
     });
+
+    return context;
   };
 };

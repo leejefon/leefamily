@@ -1,3 +1,10 @@
+/**
+ * DefaultLayout
+ *
+ * @author: Jeff Lee
+ * @createdAt: 2017/12/06
+ */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';

@@ -1,3 +1,10 @@
+/**
+ * uiReducer
+ *
+ * @author: Jeff Lee
+ * @createdAt: 2017/12/06
+ */
+
 import Immutable from 'immutable';
 import * as Actions from '../actions';
 

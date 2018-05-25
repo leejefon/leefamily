@@ -17,7 +17,6 @@ module.exports = function() {
 
   // Setup relationships
   const models = sequelize.models;
-
   Object.keys(models).map(k => models[k])
     .filter(model => model.associate)
     .forEach(model => model.associate(models));

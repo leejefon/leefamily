@@ -1,4 +1,9 @@
-'use strict';
+/**
+ * resetPassword hooks
+ *
+ * @author: Jeff Lee
+ * @createdAt: 2018/05/24
+ */
 
 const { hashPassword } = require('@feathersjs/authentication-local').hooks;
 const sendmail = require('../../hooks/sendmail');

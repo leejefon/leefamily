@@ -1,3 +1,10 @@
+/**
+ * UserFormModal
+ *
+ * @author: Jeff Lee
+ * @createdAt: 2018/05/24
+ */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';

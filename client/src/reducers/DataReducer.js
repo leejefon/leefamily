@@ -1,3 +1,10 @@
+/**
+ * App
+ *
+ * @author: Jeff Lee
+ * @createdAt: 2018/01/03
+ */
+
 import Immutable from 'immutable';
 import * as Actions from '../actions';
 

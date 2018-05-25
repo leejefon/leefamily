@@ -1,3 +1,10 @@
+/**
+ * feathers
+ *
+ * @author: Jeff Lee
+ * @createdAt: 2017/12/06
+ */
+
 import io from 'socket.io-client';
 import feathers from '@feathersjs/feathers';
 import socketio from '@feathersjs/socketio-client';

@@ -1,3 +1,10 @@
+/**
+ * Footer
+ *
+ * @author: Jeff Lee
+ * @createdAt: 2018/05/24
+ */
+
 import React, { Component } from 'react';
 import { I18n } from 'react-i18next';
 import classnames from 'classnames';

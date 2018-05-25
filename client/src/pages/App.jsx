@@ -1,3 +1,10 @@
+/**
+ * App
+ *
+ * @author: Jeff Lee
+ * @createdAt: 2017/12/06
+ */
+
 import React, { Component } from 'react';
 import Dashboard from './Dashboard';
 import DefaultLayout from './DefaultLayout';

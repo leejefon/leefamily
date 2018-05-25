@@ -1,6 +1,5 @@
 // A hook that logs service method before, after and error
-// See https://github.com/winstonjs/winston for documentation
-// about the logger.
+// See https://github.com/winstonjs/winston for documentation about the logger.
 const logger = require('winston');
 
 // To see more detailed messages, uncomment the following line

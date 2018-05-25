@@ -1,3 +1,10 @@
+/**
+ * resetPassword service
+ *
+ * @author: Jeff Lee
+ * @createdAt: 2018/05/24
+ */
+
 const express = require('@feathersjs/express');
 const hooks = require('./resetPassword.hooks');
 const util = require('../');

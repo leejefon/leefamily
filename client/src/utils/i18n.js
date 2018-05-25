@@ -1,3 +1,10 @@
+/**
+ * i18n
+ *
+ * @author: Jeff Lee
+ * @createdAt: 2018/01/04
+ */
+
 import i18n from 'i18next';
 import Backend from 'i18next-fetch-backend';
 // import LanguageDetector from 'i18next-browser-languagedetector';
