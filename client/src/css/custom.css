@@ -13,6 +13,10 @@ html, body {
   background-color: #f5f5f5;
 }
 
+.navbar {
+  box-shadow: none;
+}
+
 .form-float-label-group {
     position: relative;
     margin-bottom: 1rem;

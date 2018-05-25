@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavItem, NavLink } from 'reactstrap';
+import { I18n } from 'react-i18next';
 import classnames from 'classnames';
 import { toggleLanguage } from '../utils/i18n';
 
@@ -10,13 +11,23 @@ class Header extends Component {
     };
 
     return (
-      <Nav pills className={classnames('justify-content-end', 'container', 'p-4', fixedTop)}>
-        <NavItem>
-          <NavLink active onClick={() => toggleLanguage()} style={{ cursor: 'pointer' }}>
-            <i className="fa fa-language" />
-          </NavLink>
-        </NavItem>
-      </Nav>
+      <I18n ns="translations">
+        {t => (
+          <Navbar light className="container mb-4">
+            <NavbarBrand href="/" className="mr-auto text-primary">
+              <i className="fa fa-home" />&nbsp;&nbsp;
+              {t('title')}
+            </NavbarBrand>
+            <Nav pills className={classnames('justify-content-end', fixedTop)}>
+              <NavItem>
+                <NavLink active onClick={() => toggleLanguage()} style={{ cursor: 'pointer' }}>
+                  <i className="fa fa-language" />
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Navbar>
+        )}
+      </I18n>
     );
   }
 }

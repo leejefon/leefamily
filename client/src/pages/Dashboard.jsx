@@ -24,16 +24,15 @@ class Dashboard extends Component {
         <I18n ns="translations">
           {t => (
             <div className="container">
-              <h2 className={classnames('text-center', 'text-primary', 'p-4')}>{t('title')}</h2>
               <Row>
                 {this.props.data.users.map(user => (
-                  <Col sm="3" key={user.id}>
+                  <Col sm="3" key={user.id} className="mb-4">
                     <Card>
                       <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                       <CardBody>
                         <CardTitle>{user.name}</CardTitle>
                         <CardText>
-                          {user.email}
+                          {user.email || (<br />)}
                         </CardText>
                         <Button color="primary" size="sm">Update</Button>
                       </CardBody>

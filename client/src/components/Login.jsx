@@ -52,7 +52,7 @@ class Login extends Component {
       <I18n ns="translations">
         {t => (
           <Form className={classnames(styles.formWrapper, 'p-1')}>
-            <h2 className={classnames('text-center', 'text-primary', 'mb-3')}>{t('title')}</h2>
+            <h2 className={classnames('text-center', 'text-primary', 'mb-3')}>Login</h2>
 
             <FormGroup className="form-float-label-group">
               <Input
