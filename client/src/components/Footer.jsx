@@ -15,7 +15,7 @@ class Footer extends Component {
         {t => (
           <footer className="d-flex justify-content-between container mt-4 pt-3 pb-4 text-muted border-top">
             <div>&copy; 2018</div>
-            <div>Created by Jeff Lee</div>
+            <div>Created by <i>Jeff Lee</i></div>
           </footer>
         )}
       </I18n>

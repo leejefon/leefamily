@@ -43,7 +43,8 @@ class Dashboard extends Component {
       type: Actions.TOGGLE_USER_FORM,
       data: {
         show: true,
-        data, action
+        data,
+        action
       }
     });
   }

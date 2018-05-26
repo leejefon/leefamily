@@ -20,7 +20,7 @@ class Header extends Component {
     return (
       <I18n ns="translations">
         {t => (
-          <Navbar light className={classnames('container', 'mb-4', fixedTop)}>
+          <Navbar light className={classnames('container', 'mb-4', 'pt-4', fixedTop)}>
             <NavbarBrand href="/" className="mr-auto text-primary">
               <i className="fa fa-home mr-2" />
               {t('title')}

@@ -2,7 +2,7 @@
  * custom.css
  *
  * @author: Jeff Lee
- * @createdAt: 2017/12/06
+ * @createdAt: 2018/05/24
  */
 
 :root {
@@ -30,6 +30,7 @@ html, body {
   box-shadow: none;
 }
 
+/* Source: https://getbootstrap.com/docs/4.1/examples/floating-labels/ */
 .form-float-label-group {
   position: relative;
   margin-bottom: 1rem;

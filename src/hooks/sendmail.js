@@ -13,7 +13,7 @@ module.exports = function () {
     const email = context.data.email;
 
     const host = process.env.NODE_ENV === 'production' ?
-      'https://www.leefamily.tw' : 'http://localhost:3030'
+      'https://www.leefamily.tw' : 'http://localhost:3030';
 
     Sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
     Sendgrid.send({

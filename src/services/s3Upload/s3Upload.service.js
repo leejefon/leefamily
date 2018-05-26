@@ -3,15 +3,13 @@ const BlobService = require('feathers-blob');
 const S3BlobStore = require('s3-blob-store');
 
 module.exports = function (app) {
-  // const s3 = new AWS.S3({
-  //   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  //   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-  // });
+  const s3 = new AWS.S3({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  });
 
   const blobStore = S3BlobStore({
-    client: new AWS.S3(),
-    accessKey: process.env.AWS_ACCESS_KEY_ID,
-    secretKey: process.env.AWS_SECRET_ACCESS_KEY,
+    client: s3,
     bucket: process.env.S3_BUCKET
   });
 

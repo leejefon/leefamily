@@ -20,31 +20,48 @@ class UserFormModal extends Component {
   constructor() {
     super();
 
+    this.emptyData = {
+      name: '',
+      email: '',
+      city: '',
+      address: '',
+      home_phone: '',
+      mobile_phone: '',
+      birthday: '',
+      line: '',
+      facebook: ''
+    };
+
     this.state = {
-      data: {
-        name: '',
-        email: '',
-        city: '',
-        address: '',
-        home_phone: '',
-        mobile_phone: '',
-        birthday: '',
-        line: '',
-        facebook: ''
-      }
+      data: Object.assign({}, this.emptyData)
     };
   }
 
   componentWillReceiveProps(props) {
+    if (props.ui.userFormAction === 'UPDATE' && props.ui.selectedUser.name) {
+      const { selectedUser: user } = props.ui;
 
+      const names = [];
+      const values = [];
+      Object.keys(this.state.data).forEach((field) => {
+        names.push(field);
+        values.push(user[field] || '');
+      });
+      this.updateData(names, values);
+    }
   }
 
-  addUser() {
-    console.log(this.state.data);
-  }
+  onDrop(acceptedFiles) {
+    const S3Upload = client.service('upload');
+    const ext = acceptedFiles[0].type.split('/')[1];
 
-  updateUser() {
-    console.log(this.props.ui.selectedUser);
+    S3Upload.create({
+      id: `avatars/${Math.random().toString(36).slice(2)}.${ext}`,
+      buffer: acceptedFiles[0],
+      contentType: acceptedFiles[0].type
+    }).then((data) => {
+      this.updateData('avatar', `https://s3-us-west-2.amazonaws.com/leefamily.tw/avatars/${data.id}`);
+    });
   }
 
   updateData(name, value) {
@@ -62,19 +79,6 @@ class UserFormModal extends Component {
     this.setState({ data });
   }
 
-  onDrop(acceptedFiles) {
-    const s3Upload = client.service('upload');
-    const ext = acceptedFiles[0].type.split('/')[1];
-
-    s3Upload.create({
-      id: `avatars/${Math.random().toString(36).slice(2)}.${ext}`,
-      buffer: acceptedFiles[0],
-      contentType: acceptedFiles[0].type
-    }).then((data) => {
-      this.updateData('avatar', data.id);
-    });
-  }
-
   close() {
     this.props.dispatch({
       type: Actions.TOGGLE_USER_FORM,
@@ -84,6 +88,33 @@ class UserFormModal extends Component {
         action: null
       }
     });
+
+    this.setState({ data: Object.assign({}, this.emptyData) });
+  }
+
+  addUser() {
+    const User = client.service('users');
+    console.log(this.state.data);
+
+    // TODO: Validate data
+    // User.create({
+    //
+    // }).then(() => {
+    //   this.close();
+    // });
+  }
+
+  updateUser() {
+    const User = client.service('users');
+    console.log(this.state.data);
+
+    // User.patch({
+    //
+    // }, {
+    //
+    // }).then(() => {
+    //   this.close();
+    // });
   }
 
   render() {
@@ -111,9 +142,13 @@ class UserFormModal extends Component {
                       multiple={false}
                       accept="image/jpeg,image/png"
                     >
-                      <p className="h-100 p-3 d-flex align-items-center text-center pointer">
-                        Click or Drop photo here to upload
-                      </p>
+                      {user && !user.avatar.includes('default') ? (
+                        <img src={user.avatar} alt="" className="img-thumbnail rounded pointer" />
+                      ) : (
+                        <p className="h-100 p-3 d-flex align-items-center text-center pointer">
+                          Click or Drop photo here to upload
+                        </p>
+                      )}
                     </Dropzone>
                   </Col>
 
@@ -125,7 +160,7 @@ class UserFormModal extends Component {
                           type="text"
                           id="name"
                           placeholder="Name"
-                          value={this.state.name}
+                          value={this.state.data.name}
                           onChange={e => this.updateData('name', e.target.value)}
                         />
                         <Label for="name"><i className="fa fa-user mr-2" />Name</Label>
@@ -137,7 +172,7 @@ class UserFormModal extends Component {
                           type="email"
                           id="email"
                           placeholder="Email"
-                          value={this.state.email}
+                          value={this.state.data.email}
                           onChange={e => this.updateData('email', e.target.value)}
                         />
                         <Label for="email"><i className="fa fa-envelope mr-2" />Email</Label>
@@ -149,7 +184,7 @@ class UserFormModal extends Component {
                           type="text"
                           id="homePhone"
                           placeholder="Home Phone"
-                          value={this.state.home_phone}
+                          value={this.state.data.home_phone}
                           onChange={e => this.updateData('home_phone', e.target.value)}
                         />
                         <Label for="homePhone"><i className="fa fa-phone mr-2" />Home</Label>
@@ -161,11 +196,40 @@ class UserFormModal extends Component {
                           type="text"
                           id="mobilePhone"
                           placeholder="Mobile Phone"
-                          value={this.state.mobile_phone}
+                          value={this.state.data.mobile_phone}
                           onChange={e => this.updateData('mobile_phone', e.target.value)}
                         />
                         <Label for="mobilePhone"><i className="fa fa-mobile-alt mr-2" />Mobile</Label>
                       </FormGroup>
+
+                      <Row>
+                        <Col md="5">
+                          <FormGroup className="form-float-label-group">
+                            <Input
+                              autoFocus
+                              type="text"
+                              id="city"
+                              placeholder="City"
+                              value={this.state.data.city}
+                              onChange={e => this.updateData('city', e.target.value)}
+                            />
+                            <Label for="city"><i className="fa fa-location-arrow mr-2" />City</Label>
+                          </FormGroup>
+                        </Col>
+                        <Col md="7">
+                          <FormGroup className="form-float-label-group">
+                            <Input
+                              autoFocus
+                              type="text"
+                              id="addr"
+                              placeholder="Address"
+                              value={this.state.data.address}
+                              onChange={e => this.updateData('address', e.target.value)}
+                            />
+                            <Label for="addr"><i className="fa fa-map-marker mr-2" />Address</Label>
+                          </FormGroup>
+                        </Col>
+                      </Row>
 
                       <Row>
                         <Col>
@@ -175,7 +239,7 @@ class UserFormModal extends Component {
                               type="text"
                               id="facebook"
                               placeholder="Facebook"
-                              value={this.state.facebook}
+                              value={this.state.data.facebook}
                               onChange={e => this.updateData('facebook', e.target.value)}
                             />
                             <Label for="facebook"><i className="fab fa-facebook mr-2" />Facebook</Label>
@@ -188,7 +252,7 @@ class UserFormModal extends Component {
                               type="text"
                               id="line"
                               placeholder="LINE"
-                              value={this.state.line}
+                              value={this.state.data.line}
                               onChange={e => this.updateData('line', e.target.value)}
                             />
                             <Label for="line"><i className="fab fa-line mr-2" />LINE</Label>
