@@ -54,7 +54,7 @@ class UserModal extends Component {
                         <td>{user.home_phone}</td>
                       </tr>
                       <tr className={classnames({ 'd-none': !user.mobile_phone })}>
-                        <th><i className="fa fa-phone mr-2" />Mobile</th>
+                        <th><i className="fa fa-mobile-alt mr-2" />Mobile</th>
                         <td>{user.mobile_phone}</td>
                       </tr>
                       <tr className={classnames({ 'd-none': !(user.address || user.city) })}>

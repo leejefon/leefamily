@@ -12,7 +12,6 @@ import { I18n } from 'react-i18next';
 import classnames from 'classnames';
 import client from '../utils/feathers';
 import * as Actions from '../actions';
-import styles from '../css/defaultLayout.scss';
 
 class ResetPasswordRequest extends Component {
   constructor() {
@@ -61,7 +60,7 @@ class ResetPasswordRequest extends Component {
     return (
       <I18n ns="translations">
         {t => (
-          <Form className={classnames(styles.formWrapper, 'p-1')}>
+          <Form className="p-1 w-100 m-auto" style={{ maxWidth: 420 }}>
             <h2 className={classnames('text-center', 'text-primary', 'mb-3')}>Reset Password</h2>
 
             <FormGroup className="form-float-label-group">

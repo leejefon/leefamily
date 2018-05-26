@@ -17,7 +17,7 @@ class App extends Component {
     super();
 
     this.state = {
-      loggedIn: false
+      loggedIn: null
     };
   }
 
@@ -32,7 +32,11 @@ class App extends Component {
   }
 
   render() {
-    return this.state.loggedIn ? (<Dashboard />) : (<DefaultLayout />)
+    if (this.state.loggedIn === null) {
+      return (<DefaultLayout loading />);
+    }
+
+    return this.state.loggedIn ? (<Dashboard />) : (<DefaultLayout />);
   }
 }
 

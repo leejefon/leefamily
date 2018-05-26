@@ -27,7 +27,7 @@ class Header extends Component {
             </NavbarBrand>
             <Nav pills className="justify-content-end">
               <NavItem>
-                <NavLink active onClick={() => toggleLanguage()} style={{ cursor: 'pointer' }}>
+                <NavLink active onClick={() => toggleLanguage()} className="pointer">
                   <i className="fa fa-language" />
                 </NavLink>
               </NavItem>
