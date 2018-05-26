@@ -35,7 +35,7 @@ class Dashboard extends Component {
         show: true,
         data
       }
-    })
+    });
   }
 
   openUserForm(action, data) {
@@ -45,7 +45,7 @@ class Dashboard extends Component {
         show: true,
         data, action
       }
-    })
+    });
   }
 
   search(query) {
@@ -72,12 +72,12 @@ class Dashboard extends Component {
                     placeholder="Search"
                     onChange={e => this.search(e.target.value)}
                   />
-                  <Label for="search">Search</Label>
+                  <Label for="search"><i className="fa fa-search mr-2" />Search</Label>
                 </FormGroup>
 
                 <Button
                   color="link"
-                  onClick={e => this.openUserForm('ADD')}
+                  onClick={() => this.openUserForm('ADD')}
                 >
                   <i className="fa fa-plus mr-2" />Add User
                 </Button>
@@ -87,7 +87,13 @@ class Dashboard extends Component {
                 {users.map(user => (
                   <Col lg="3" md="4" sm="6" key={user.id} className="mb-4">
                     <Card onClick={() => this.openUserModal(user)}>
-                      <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+                      <CardImg
+                        top
+                        height="200"
+                        alt="Card image cap"
+                        src={user.avatar || 'https://placeholdit.imgix.net/~text?txtsize=33&txt=250%C3%97200&w=250&h=200'}
+                        style={{ objectFit: 'cover' }}
+                      />
                       <CardBody>
                         <CardTitle>{user.name}</CardTitle>
                         <CardText>

@@ -36,7 +36,7 @@ export function search(query) { // TODO: maybe use Fuse.js to search
 
       dispatch({
         type: SET_FILTERED_USER,
-        data: users.filter(user => user.name.includes(query) || user.email.includes(query))
+        data: users.filter(user => user.name.includes(query) || (user.email && user.email.includes(query)))
       });
     }
   };

@@ -7,10 +7,9 @@
 
 const express = require('@feathersjs/express');
 const hooks = require('./resetPassword.hooks');
-const util = require('../');
 
 const generateToken = () => Array.from(new Array(5))
-  .map(i => Math.random().toString(36).slice(2)) // 5 chars
+  .map(() => Math.random().toString(36).slice(2)) // 5 chars times 5
   .join('');
 
 class ResetPassword {

@@ -23,7 +23,7 @@ module.exports = function(app) {
       type: Sequelize.STRING
     },
     mobile_phone: {
-      type: Sequelize.ENUM('M', 'F', 'O')
+      type: Sequelize.STRING
     },
     city: {
       type: Sequelize.STRING
