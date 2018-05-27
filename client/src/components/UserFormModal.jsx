@@ -21,6 +21,7 @@ class UserFormModal extends Component {
     super();
 
     this.emptyData = {
+      id: '',
       name: '',
       email: '',
       city: '',
@@ -94,27 +95,28 @@ class UserFormModal extends Component {
 
   addUser() {
     const User = client.service('users');
-    console.log(this.state.data);
 
     // TODO: Validate data
-    // User.create({
-    //
-    // }).then(() => {
-    //   this.close();
-    // });
+    User.create(this.state.data).then(() => {
+      this.close();
+      // this.dispatch({
+      //
+      // });
+    });
   }
 
   updateUser() {
     const User = client.service('users');
-    console.log(this.state.data);
 
-    // User.patch({
-    //
-    // }, {
-    //
-    // }).then(() => {
-    //   this.close();
-    // });
+    // TODO: Validate data
+    User
+      .patch(this.state.data.id, this.state.data)
+      .then(() => {
+        this.close();
+        // this.dispatch({
+        //
+        // });
+      });
   }
 
   render() {

@@ -7,11 +7,11 @@ module.exports = function(app) {
       type: Sequelize.STRING
     },
     email: {
-      type: Sequelize.STRING,
-      allowNull: false
+      type: Sequelize.STRING
     },
     avatar: {
-      type: Sequelize.TEXT
+      type: Sequelize.STRING,
+      defaultValue: 'https://s3-us-west-2.amazonaws.com/leefamily.tw/avatars/default.png'
     },
     password: {
       type: Sequelize.STRING
