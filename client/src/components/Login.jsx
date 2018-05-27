@@ -69,7 +69,7 @@ class Login extends Component {
                 value={this.state.email}
                 onChange={e => this.updateField('email', e.target.value)}
               />
-              <Label for="email">Email</Label>
+              <Label for="email"><i className="fa fa-envelope mr-2" />Email</Label>
             </FormGroup>
             <FormGroup className="form-float-label-group">
               <Input
@@ -79,7 +79,7 @@ class Login extends Component {
                 value={this.state.password}
                 onChange={e => this.updateField('password', e.target.value)}
               />
-              <Label for="password">Password</Label>
+              <Label for="password"><i className="fas fa-key mr-2" />Password</Label>
             </FormGroup>
 
             <div className="text-center">

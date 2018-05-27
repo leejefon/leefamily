@@ -72,7 +72,7 @@ class ResetPasswordRequest extends Component {
                 value={this.state.email}
                 onChange={e => this.updateField('email', e.target.value)}
               />
-              <Label for="email">Email</Label>
+              <Label for="email"><i className="fa fa-envelope mr-2" />Email</Label>
             </FormGroup>
 
             <div className="text-center">

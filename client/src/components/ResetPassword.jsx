@@ -93,7 +93,7 @@ class ResetPassword extends Component {
                 value={this.state.newPassword}
                 onChange={e => this.updateField('newPassword', e.target.value)}
               />
-              <Label for="newPassword">New Password</Label>
+              <Label for="newPassword"><i className="fas fa-key mr-2" />New Password</Label>
             </FormGroup>
 
             <FormGroup className="form-float-label-group">
@@ -104,7 +104,7 @@ class ResetPassword extends Component {
                 value={this.state.confirmPassword}
                 onChange={e => this.updateField('confirmPassword', e.target.value)}
               />
-              <Label for="confirmPassword">Confirm Password</Label>
+              <Label for="confirmPassword"><i className="fas fa-key mr-2" />Confirm Password</Label>
             </FormGroup>
 
             <div className="text-center">
