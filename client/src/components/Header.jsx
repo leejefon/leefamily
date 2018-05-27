@@ -14,13 +14,18 @@ import client from '../utils/feathers';
 
 class Header extends Component {
   render() {
+    const logout = () => {
+      client.logout();
+      window.location.href = '/';
+    };
+
     const fixedTop = {
       'fixed-top': this.props.fixedTop
     };
 
-    const logout = localStorage.getItem('feathers-jwt') ? (
+    const logoutBtn = localStorage.getItem('feathers-jwt') ? (
       <NavItem>
-        <NavLink active onClick={() => client.logout()} className="pointer ml-2">
+        <NavLink active onClick={() => logout()} className="pointer ml-2">
           <i className="fas fa-sign-out-alt" />
         </NavLink>
       </NavItem>
@@ -29,7 +34,7 @@ class Header extends Component {
     return (
       <I18n ns="translations">
         {t => (
-          <Navbar light className={classnames('container', 'mb-4', 'pt-4', fixedTop)} style={{ backgroundColor: 'f5f5f5' }}>
+          <Navbar light className={classnames('container', 'mb-4', 'pt-4', fixedTop)} style={{ backgroundColor: '#f5f5f5' }}>
             <NavbarBrand href="/" className="mr-auto text-primary">
               <i className="fa fa-home mr-2" />
               {t('title')}
@@ -40,7 +45,7 @@ class Header extends Component {
                   <i className="fa fa-language" />
                 </NavLink>
               </NavItem>
-              {logout}
+              {logoutBtn}
             </Nav>
           </Navbar>
         )}
