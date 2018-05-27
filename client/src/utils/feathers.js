@@ -18,7 +18,14 @@ client.configure(authentication({
   storage: window.localStorage
 }));
 
-client.getCurrentUser = () => client.passport.verifyJWT(localStorage['feathers-jwt'])
-  .then(user => client.service('users').get(user.userId));
+client.getCurrentUser = () => (localStorage.getItem('feathers-jwt') ?
+  client.passport.verifyJWT(localStorage.getItem('feathers-jwt'))
+    .then(user => client.service('users').get(user.userId)) :
+  Promise.resolve({ error: 'Not logged in yet' }));
+
+client.logout = () => {
+  localStorage.removeItem('feathers-jwt');
+  window.location.href = '/';
+};
 
 export default client;

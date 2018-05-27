@@ -29,7 +29,7 @@ i18n
   });
 
 if (!cookie.load('locale')) {
-  cookie.save('en');
+  cookie.save('locale', 'en');
 }
 i18n.changeLanguage(cookie.load('locale'));
 

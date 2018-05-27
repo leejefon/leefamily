@@ -10,12 +10,21 @@ import { Nav, Navbar, NavbarBrand, NavItem, NavLink } from 'reactstrap';
 import { I18n } from 'react-i18next';
 import classnames from 'classnames';
 import { toggleLanguage } from '../utils/i18n';
+import client from '../utils/feathers';
 
 class Header extends Component {
   render() {
     const fixedTop = {
       'fixed-top': this.props.fixedTop
     };
+
+    const logout = localStorage.getItem('feathers-jwt') ? (
+      <NavItem>
+        <NavLink active onClick={() => client.logout()} className="pointer ml-2">
+          <i className="fas fa-sign-out-alt" />
+        </NavLink>
+      </NavItem>
+    ) : null;
 
     return (
       <I18n ns="translations">
@@ -31,6 +40,7 @@ class Header extends Component {
                   <i className="fa fa-language" />
                 </NavLink>
               </NavItem>
+              {logout}
             </Nav>
           </Navbar>
         )}
