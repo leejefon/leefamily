@@ -52,6 +52,17 @@ class ResetPassword extends Component {
     const { newPassword: password, confirmPassword } = this.state;
     const password_reset_key = this.props.match.params.token;
 
+    if (!password) {
+      this.props.dispatch({
+        type: Actions.SET_ALERT,
+        data: {
+          type: 'danger',
+          message: 'Password can not be empty'
+        }
+      });
+      return;
+    }
+
     if (password !== confirmPassword) {
       this.props.dispatch({
         type: Actions.SET_ALERT,

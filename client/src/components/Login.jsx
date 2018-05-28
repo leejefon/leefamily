@@ -30,6 +30,18 @@ class Login extends Component {
   login(e) {
     e.preventDefault();
 
+    const { email, password } = this.state;
+    if (!email || !password) {
+      this.props.dispatch({
+        type: Actions.SET_ALERT,
+        data: {
+          type: 'danger',
+          message: 'All fields are required'
+        }
+      });
+      return;
+    }
+
     client.authenticate({
       strategy: 'local',
       email: this.state.email,

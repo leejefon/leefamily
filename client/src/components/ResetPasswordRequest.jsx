@@ -31,6 +31,17 @@ class ResetPasswordRequest extends Component {
 
     const { email } = this.state;
 
+    if (!email) {
+      this.props.dispatch({
+        type: Actions.SET_ALERT,
+        data: {
+          type: 'danger',
+          message: 'Email is required'
+        }
+      });
+      return;
+    }
+
     client.service('api/resetPassword')
       .create({ email })
       .then((response) => {
